@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 
 import Login from "./components/Login";
 
+import AddChar from "./components/AddCharacter";
+
 function App() {
   return (
     <>
@@ -13,6 +15,7 @@ function App() {
       <p>{import.meta.env.VITE_TEST}</p>
       <p>Ryan's cool test</p>
       <Login />
+      <AddChar />
       <Footer />
     </>
   );
