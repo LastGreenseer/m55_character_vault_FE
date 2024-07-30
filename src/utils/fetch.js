@@ -17,23 +17,25 @@ export const login = async (username, password) => {
   }
 };
 
-
 export const updateAcc = async (updateData) => {
-  const response = await fetch("http://localhost:5001/users/updateAcc", {
-    method: "PUT",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updateData),
-  });
+  const response = await fetch(
+    `${import.meta.env.VITE_BASE_URL}/users/updateAcc`,
+    {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateData),
+    }
+  );
 
   const data = await response.json();
   console.log(data);
   return data;
 };
 
-  export const addCharacter = async (name, age, pronouns, description, book) => {
+export const addCharacter = async (name, age, pronouns, description, book) => {
   try {
     const response = await fetch("http://localhost:5001/char/addCharacter", {
       method: "POST",
