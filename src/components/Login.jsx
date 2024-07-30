@@ -3,7 +3,7 @@ import { changeHandler } from "../utils/helpers";
 
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,6 +12,9 @@ const Login = () => {
     console.log("submit handler login");
 
     const data = await login(username, password);
+
+    logOrSignSetters.setIsLoggedIn(true);
+    logOrSignSetters.setLoggedUser(data);
 
     setUsername();
     setPassword();
