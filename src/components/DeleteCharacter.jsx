@@ -1,5 +1,5 @@
-import React from "react";
-import { deleteCharater } from "../utils/fetch";
+import React, { useState } from "react"
+import { deleteCharacter } from "../utils/fetch";
 import styled from "styled-components";
 
 const DeleteCharacter = () => {
@@ -9,7 +9,7 @@ const DeleteCharacter = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const result = await DeleteCharacter(name);
+      const result = await deleteCharacter(name);
       setMessage("Character Deleted!");
       console.log("Character Deleted!", result);
     } catch (error) {
@@ -25,7 +25,7 @@ const DeleteCharacter = () => {
         <input
           type="text"
           value={name}
-          onChange={(e = setName(e.target.value))}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Character Name"
           required
         />
