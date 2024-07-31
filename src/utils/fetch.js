@@ -41,3 +41,26 @@ export const login = async (username, password) => {
     console.log(error);
   }
 };
+
+export const DeleteAcc = async(deleteData) => {
+  try{ 
+     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`, {
+    
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deleteData),
+      }
+    );
+
+    const data = await response.json();
+      if (response.ok) {
+        setMessage("User deleted successfully");
+      } else {
+        setMessage(data.message || "Failed to delete user");
+      } 
+    } catch (error) {
+      setMessage("An error occurred: " + error.message);
+    }};
