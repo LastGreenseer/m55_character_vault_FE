@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
@@ -20,6 +19,7 @@ const App = () => {
     loggedUser,
     setLoggedUser,
   };
+  
   return (
     <>
       <Header loggedUser={loggedUser} />
