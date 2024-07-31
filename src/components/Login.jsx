@@ -3,7 +3,7 @@ import { changeHandler } from "../utils/helpers";
 
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,11 +13,12 @@ const Login = () => {
 
     const data = await login(username, password);
 
-    setUsername();
-    setPassword();
-
-    return data;
+    logOrSignSetters.setIsLoggedIn(true);
+    logOrSignSetters.setLoggedUser(data);
+    setUsername("");
+    setPassword("");
   };
+
   return (
     <div className="loginWrap">
       <h2>Login</h2>
