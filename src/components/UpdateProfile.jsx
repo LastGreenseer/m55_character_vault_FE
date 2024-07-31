@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { updateAcc } from "../utils/fetch";
 
-const UpdateProfile = () => {
-  const fakeUser = {
-    id: 123,
-    username: "person",
-    email: "email@email.com",
-    password: "pass123",
-  };
-
-  const [username, setUsername] = useState(fakeUser.username);
-  const [email, setEmail] = useState(fakeUser.email);
+const UpdateProfile = ({ loggedUser }) => {
+  const [username, setUsername] = useState(loggedUser.user.username);
+  const [email, setEmail] = useState(loggedUser.user.email);
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setUsername(loggedUser.user.username);
+    setEmail(loggedUser.user.email);
+  }, [loggedUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const updateData = {
-      id: fakeUser.id,
+      id: loggedUser.user.id,
       username,
       email,
       password,
