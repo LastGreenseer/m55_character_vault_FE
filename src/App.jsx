@@ -27,6 +27,10 @@ const App = () => {
         <Routes>
           <Route path="/login" element={isLoggedIn ? <Navigate to="/" replace /> : <Login logOrSignSetters={logOrSignSetters} />} />
           <Route path="/signup" element={isLoggedIn ? <Navigate to="/" replace /> : <Signup />} />
+          {/*  
+            If page requires users to be logged in, run conditional check in element, first part is if user is logged in
+            second part is if they aren't logged in, in the case below navigate to the login page 
+          */}
           <Route
             path="/"
             element={isLoggedIn ? <Home user={loggedUser} /> : <Navigate to="/login" replace />}
