@@ -59,3 +59,24 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
     console.log(error);
   }
 };
+
+export const deleteCharater = async (name) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5001/char/deleteCharacter/${name}`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log("data", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
