@@ -16,8 +16,8 @@ const Header = ({ loggedUser }) => {
   );
 };
 
+export default Header;
+
 const StyledHeader = styled.h1`
   text-align: center;
 `;
-
-export default Header;

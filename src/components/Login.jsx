@@ -15,12 +15,10 @@ const Login = ({ logOrSignSetters }) => {
 
     logOrSignSetters.setIsLoggedIn(true);
     logOrSignSetters.setLoggedUser(data);
-
-    setUsername();
-    setPassword();
-
-    return data;
+    setUsername("");
+    setPassword("");
   };
+
   return (
     <div className="loginWrap">
       <h2>Login</h2>
