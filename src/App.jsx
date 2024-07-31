@@ -18,7 +18,7 @@ const App = () => {
   };
   return (
     <>
-      <Header />
+      <Header loggedUser={loggedUser} />
       <h1>Character Vault</h1>
       <p>{import.meta.env.VITE_TEST}</p>
       <Login logOrSignSetters={logOrSignSetters} />
