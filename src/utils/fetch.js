@@ -66,7 +66,7 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
   }
 };
 
-export const deleteCharater = async (name) => {
+export const deleteCharacter = async (name) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/deleteCharacter/${name}`,

@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./pages/Signup";
 import AddChar from "./components/AddCharacter";
+import DeleteCharacter from "./components/DeleteCharacter";
 import UpdateProfile from "./components/UpdateProfile";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
