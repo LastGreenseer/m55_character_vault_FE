@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
-    <h1>Character Vault</h1>
+    <div>
+      <h1>Character Vault</h1>
+      <Link to="/profile">Profile</Link>
+    </div>
   );
-}
+};
 
 export default Home;
