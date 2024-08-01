@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DeleteAccount } from "../utils/fetch";
+import { DeleteAccount} from "../utils/fetch";
 
 const DeleteAccount = ({userId}) => {
   const fakeUser = {
