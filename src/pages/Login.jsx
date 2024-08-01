@@ -27,15 +27,16 @@ const Login = ({ logOrSignSetters }) => {
         setErrors({ error: data.error, message: data.message })
         return;
       }
-      console.log('successful');
+    logOrSignSetters.setIsLoggedIn(true);
+    logOrSignSetters.setLoggedUser(data);
+    setUsername("");
+    setPassword("");
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
     } catch (error) {
       console.log(error);
     }
-
-    // logOrSignSetters.setIsLoggedIn(true);
-    // logOrSignSetters.setLoggedUser(data);
-    // setUsername("");
-    // setPassword("");
   };
 
   return (
