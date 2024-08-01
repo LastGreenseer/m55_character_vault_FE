@@ -84,3 +84,20 @@ export const deleteCharacter = async (name) => {
     console.log(error);
   }
 };
+
+export const getCharacter = async (name) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BASE_URL}/char/getCharacter/${name}`,
+    {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name }),
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+};    
