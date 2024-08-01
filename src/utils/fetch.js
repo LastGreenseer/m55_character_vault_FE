@@ -69,7 +69,7 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
 export const updateCharacter = async (name) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/char/updateCharacter${name}`,
+      `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${name}`,
       {
         method: "PUT",
         mode: "cors",
