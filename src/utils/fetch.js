@@ -71,7 +71,7 @@ export const updateCharacter = async (name) => {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/updateCharacter${name}`,
       {
-        method: "PuST",
+        method: "PUT",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
