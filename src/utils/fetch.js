@@ -66,6 +66,27 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
   }
 };
 
+export const updateCharacter = async (name) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/char/updateCharacter${name}`,
+      {
+        method: "PuST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log("data ", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteCharacter = async (name) => {
   try {
     const response = await fetch(
