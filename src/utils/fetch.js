@@ -66,7 +66,7 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
   }
 };
 
-export const updateCharacter = async (name) => {
+export const updateCharacter = async (name, age, pronouns, description, book) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${name}`,
@@ -76,8 +76,19 @@ export const updateCharacter = async (name) => {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          name,
+          age,
+          pronouns,
+          description,
+          book,
+        }),
       }
     );
+
+     if (response.status === 204) {
+       return { message: "No content" };
+     }
 
     const data = await response.json();
     console.log("data ", data);

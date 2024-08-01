@@ -14,6 +14,12 @@ const UpdateChar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !age || !pronouns || !description || !book) {
+      setError("All fields are required.");
+      return;
+    }
+    
     try {
       const response = await updateCharacter(
         name,
