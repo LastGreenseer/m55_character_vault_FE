@@ -42,10 +42,6 @@ const SignupForm = styled.form`
   }
 `;
 
-const ErrorBox = styled.div`
-  background: red;
-`;
-
 const SuccessBox = styled.div`
   background: #438f43;
   border: 1px solid #ffffff4d;
@@ -63,7 +59,6 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
-  const [errors, setErrors] = useState();
   const [success, setSuccess] = useState();
 
   const navigate = useNavigate();

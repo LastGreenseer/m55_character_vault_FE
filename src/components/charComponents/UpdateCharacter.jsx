@@ -1,7 +1,7 @@
-import { addCharacter } from "../utils/fetch";
+import { updateCharacter } from "../../utils/charFetch";
 import { useState } from "react";
 
-const AddChar = () => {
+const UpdateChar = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -14,8 +14,14 @@ const AddChar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !age || !pronouns || !description || !book) {
+      setError("All fields are required.");
+      return;
+    }
+
     try {
-      const response = await addCharacter(
+      const response = await updateCharacter(
         name,
         age,
         pronouns,
@@ -23,17 +29,16 @@ const AddChar = () => {
         book
       );
 
-      console.log("Successfully added character", response);
+      console.log("Successfully updated character", response);
     } catch (error) {
-      console.error("Failed to add character.", error);
+      console.error("Failed to update character.", error);
     }
   };
 
   return (
     <div className="mainContainer">
-      <form onSubmit={handleSubmit} className="addCharacterForm">
-        <div className="addCharacterContainer">
-          #
+      <form onSubmit={handleSubmit} className="updateCharacterForm">
+        <div className="updateCharacterContainer">
           <input
             onChange={(e) => handleChange(e, setName)}
             type="text"
@@ -64,11 +69,11 @@ const AddChar = () => {
             placeholder="Book"
             className="bookInput"
           />
-          <button type="submit">Add Character</button>
+          <button type="submit">update Character</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddChar;
+export default UpdateChar;

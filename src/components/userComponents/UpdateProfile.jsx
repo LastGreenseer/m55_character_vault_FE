@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { updateAcc } from "../utils/fetch";
+import { updateAcc } from "../../utils/usersFetch";
 
 const UpdateProfile = ({ loggedUser }) => {
   const [username, setUsername] = useState(loggedUser.user.username);

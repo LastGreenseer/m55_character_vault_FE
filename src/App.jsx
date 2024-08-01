@@ -9,11 +9,8 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import AddChar from "./components/AddCharacter";
-import DeleteCharacter from "./components/DeleteCharacter";
-import UpdateProfile from "./components/UpdateProfile";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 
