@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { fetch } from ("../utils/fetch")
 
-const DeleteAccount = () => {
+const DeleteAccount = ({userId}) => {
   const fakeUser = {
     username: "person",
   email:"email@email",
@@ -10,20 +11,25 @@ const DeleteAccount = () => {
 
 const [userId, setUserId] = useState("");
 const [message, setMessage] = useState("");
+  
+const handleDelete = async () => {
 
-  const handleDelete = async () => {
     if (!userId) {
-      setMessage("User ID is required");
+      setMessage('User ID is required');
       return;
     }
-
+    try{
+  
       const data = await response.json();
       if (response.ok) {
         setMessage("User deleted successfully");
       } else {
         setMessage(data.message || "Failed to delete user");
       }
-  
+      } catch (error) {
+        setMesasage (' an error occured:' + error.message);
+      }
+    }
 
   return (
     <div>

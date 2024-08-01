@@ -66,7 +66,13 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
   }
 };
 
-export const updateCharacter = async (name, age, pronouns, description, book) => {
+export const updateCharacter = async (
+  name,
+  age,
+  pronouns,
+  description,
+  book
+) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${name}`,
@@ -86,9 +92,9 @@ export const updateCharacter = async (name, age, pronouns, description, book) =>
       }
     );
 
-     if (response.status === 204) {
-       return { message: "No content" };
-     }
+    if (response.status === 204) {
+      return { message: "No content" };
+    }
 
     const data = await response.json();
     console.log("data ", data);
@@ -119,10 +125,11 @@ export const deleteCharacter = async (name) => {
   }
 };
 
-export const DeleteAcc = async(deleteData) => {
-  try{ 
-     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`, {
-    
+export const DeleteAcc = async (deleteData) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`,
+      {
         method: "DELETE",
         mode: "cors",
         headers: {
@@ -133,11 +140,9 @@ export const DeleteAcc = async(deleteData) => {
     );
 
     const data = await response.json();
-      if (response.ok) {
-        setMessage("User deleted successfully");
-      } else {
-        setMessage(data.message || "Failed to delete user");
-      } 
-    } catch (error) {
-      setMessage("An error occurred: " + error.message);
-    }};
+    console.log("data", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
