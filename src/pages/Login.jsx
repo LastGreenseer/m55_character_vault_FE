@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { useState } from "react";
-import Error from "../components/Error";
+import Error from "../components/userComponents/Error";
 
 const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");
@@ -24,16 +24,16 @@ const Login = ({ logOrSignSetters }) => {
     try {
       const data = await login(username, password);
       if (data.error) {
-        setErrors({ error: data.error, message: data.message })
+        setErrors({ error: data.error, message: data.message });
         return;
       }
-    logOrSignSetters.setIsLoggedIn(true);
-    logOrSignSetters.setLoggedUser(data);
-    setUsername("");
-    setPassword("");
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+      logOrSignSetters.setIsLoggedIn(true);
+      logOrSignSetters.setLoggedUser(data);
+      setUsername("");
+      setPassword("");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -49,12 +49,12 @@ const Login = ({ logOrSignSetters }) => {
           </p>
         </LoginHeader>
         {errors?.error ? (
-          <Error 
+          <Error
             title="There was an error logging in."
             message={errors?.message}
           />
         ) : (
-          ''
+          ""
         )}
         <LoginForm onSubmit={submitHandler}>
           <label>Username</label>
