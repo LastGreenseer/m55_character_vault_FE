@@ -1,29 +1,28 @@
-import { fetch } from ("../utils/fetch")
+import { deleteAcc } from "../../utils/usersFetch";
 
 const DeleteAccount = () => {
   const fakeUser = {
     username: "person",
-  email:"email@email",
-  password:"pass123",
-  }
-}
+    email: "email@email",
+    password: "pass123",
+  };
+};
 
 const [userId, setUserId] = useState("");
 const [message, setMessage] = useState("");
 
-  const handleDelete = async () => {
-    if (!userId) {
-      setMessage("User ID is required");
-      return;
-    }
+const handleDelete = async () => {
+  if (!userId) {
+    setMessage("User ID is required");
+    return;
+  }
 
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("User deleted successfully");
-      } else {
-        setMessage(data.message || "Failed to delete user");
-      }
-  
+  const data = await response.json();
+  if (response.ok) {
+    setMessage("User deleted successfully");
+  } else {
+    setMessage(data.message || "Failed to delete user");
+  }
 
   return (
     <div>
@@ -41,5 +40,3 @@ const [message, setMessage] = useState("");
 };
 
 export default DeleteAccount;
-
-
