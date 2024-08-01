@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { useState } from "react";
+import Error from "../components/Error";
 
 const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [errors, setErrors] = useState();
 
   const navigate = useNavigate();
 
@@ -18,12 +21,21 @@ const Login = ({ logOrSignSetters }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    const data = await login(username, password);
+    try {
+      const data = await login(username, password);
+      if (data.error) {
+        setErrors({ error: data.error, message: data.message })
+        return;
+      }
+      console.log('successful');
+    } catch (error) {
+      console.log(error);
+    }
 
-    logOrSignSetters.setIsLoggedIn(true);
-    logOrSignSetters.setLoggedUser(data);
-    setUsername("");
-    setPassword("");
+    // logOrSignSetters.setIsLoggedIn(true);
+    // logOrSignSetters.setLoggedUser(data);
+    // setUsername("");
+    // setPassword("");
   };
 
   return (
@@ -35,6 +47,14 @@ const Login = ({ logOrSignSetters }) => {
             Don't have an account? <Link to="/signup">Signup</Link>
           </p>
         </LoginHeader>
+        {errors?.error ? (
+          <Error 
+            title="There was an error logging in."
+            message={errors?.message}
+          />
+        ) : (
+          ''
+        )}
         <LoginForm onSubmit={submitHandler}>
           <label>Username</label>
           <input
