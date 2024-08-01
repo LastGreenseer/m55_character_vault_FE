@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Signup from "./pages/Signup";
 import AddChar from "./components/AddCharacter";
 import UpdateProfile from "./components/UpdateProfile";
+import CharacterRoutes from "./components/CharacterRoutes";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

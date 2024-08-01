@@ -109,3 +109,20 @@ export const DeleteAcc = async(deleteData) => {
     } catch (error) {
       setMessage("An error occurred: " + error.message);
     }};
+
+    export const getCharacter = async(name) => {
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/char/getCharacter/${name}`,
+        {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({name}),
+        }
+      );
+      const data = await response.json()
+      console.log(data)
+      return data 
+  };    
