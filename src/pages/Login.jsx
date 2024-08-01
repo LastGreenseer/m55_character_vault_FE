@@ -1,5 +1,4 @@
-import { login } from "../utils/fetch";
-import { changeHandler } from "../utils/helpers";
+import { login } from "../utils/usersFetch";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +10,10 @@ const Login = ({ logOrSignSetters }) => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  const changeHandler = (event, setter) => {
+    setter(event.target.value);
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();

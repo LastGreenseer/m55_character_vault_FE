@@ -1,4 +1,4 @@
-import { addCharacter } from "../utils/fetch";
+import { addCharacter } from "../../utils/charFetch";
 import { useState } from "react";
 
 const AddChar = () => {
