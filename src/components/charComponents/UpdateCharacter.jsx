@@ -1,4 +1,4 @@
-import { updateCharacter } from "../utils/fetch";
+import { updateCharacter } from "../../utils/charFetch";
 import { useState } from "react";
 
 const UpdateChar = () => {
@@ -19,7 +19,7 @@ const UpdateChar = () => {
       setError("All fields are required.");
       return;
     }
-    
+
     try {
       const response = await updateCharacter(
         name,

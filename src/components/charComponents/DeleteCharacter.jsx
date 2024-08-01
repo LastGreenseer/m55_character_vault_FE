@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { deleteCharacter } from "../utils/fetch";
+import React, { useState } from "react";
+import { deleteCharacter } from "../../utils/charFetch";
 import styled from "styled-components";
 
 const DeleteCharacter = () => {
@@ -42,4 +42,4 @@ const DeleteHeader = styled.h2``;
 
 const DeleteButton = styled.button``;
 
-export default DeleteCharacter
+export default DeleteCharacter;
