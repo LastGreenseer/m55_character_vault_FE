@@ -1,3 +1,5 @@
+export { getAvatar } from "./fetchAPI"
+
 export const login = async (username, password) => {
   try {
     const response = await fetch(
@@ -109,3 +111,5 @@ export const DeleteAcc = async(deleteData) => {
     } catch (error) {
       setMessage("An error occurred: " + error.message);
     }};
+
+    

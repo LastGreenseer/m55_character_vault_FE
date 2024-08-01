@@ -44,7 +44,6 @@ const SignupForm = styled.form`
 
 const ErrorBox = styled.div`
   background: red;
-  color: white;
 `;
 
 const SuccessBox = styled.div`
