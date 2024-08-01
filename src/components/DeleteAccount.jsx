@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetch } from ("../utils/fetch")
+import { DeleteAccount } from "../utils/fetch";
 
 const DeleteAccount = ({userId}) => {
   const fakeUser = {
@@ -44,7 +44,7 @@ const handleDelete = async () => {
       {message && <p>{message}</p>}
     </div>
   );
-};
+
 
 export default DeleteAccount;
 

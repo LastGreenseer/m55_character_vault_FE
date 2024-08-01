@@ -125,7 +125,7 @@ export const deleteCharacter = async (name) => {
   }
 };
 
-export const DeleteAcc = async (deleteData) => {
+export const DeleteAccount = async (deleteData) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`,
