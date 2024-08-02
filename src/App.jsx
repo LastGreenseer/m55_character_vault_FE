@@ -62,7 +62,10 @@ const App = () => {
             path="/profile"
             element={
               isLoggedIn ? (
-                <Profile loggedUser={loggedUser} />
+                <Profile
+                  loggedUser={loggedUser}
+                  logOrSignSetters={logOrSignSetters}
+                />
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -77,6 +80,7 @@ const App = () => {
       <UpdateProfile loggedUser={loggedUser} />
       <AddChar />
       <Footer /> */}
+      <Footer />
     </>
   );
 };
