@@ -53,12 +53,13 @@ export const deleteAccount = async (id) => {
     );
 
     if (!response.ok) {
-      throw new Error('Failed to delete')
+      throw new Error("Failed to delete");
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.log("Deletion error", error);
+    throw error;
   }
 };
