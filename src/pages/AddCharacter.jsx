@@ -34,6 +34,9 @@ const AddChar = () => {
   return (
     <>
       <AddCharacterWrapper>
+        <BackButton>
+          <h2><Link to="/Home">Back</Link></h2>
+        </BackButton>
         <AddCharacterHeader>
           <h2>Please input your character's information</h2>
         </AddCharacterHeader>
@@ -85,10 +88,11 @@ const AddCharacterWrapper = styled.div`
   border: 1px solid #cecece0f;
   background: #1a1b20;
   margin: auto;
-  font-family: Arial, sans-serif;
+  font-family: "Rubik", sans-serif;
 `;
 
 const AddCharacterForm = styled.form`
+  font-family: "Rubik", sans-serif;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -130,3 +134,14 @@ const AddCharacterHeader = styled.div`
   justify-content: center;
 `;
 
+const BackButton = styled.div`
+  color: white;
+  text-decoration: none;
+  width: 25%;
+  font-size: 15px;
+  text-align: left;
+  font-family: "Rubik", sans-serif;
+  :hover {
+    color: #dd901d;
+  }
+`;
