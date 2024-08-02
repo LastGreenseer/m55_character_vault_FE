@@ -39,7 +39,7 @@ export const updateAcc = async (updateData) => {
   return data;
 };
 
-export const deleteAcc = async (id) => {
+export const deleteAccount = async (id) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`,
