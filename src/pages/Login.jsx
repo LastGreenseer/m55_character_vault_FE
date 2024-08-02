@@ -86,7 +86,7 @@ const LoginWrapper = styled.div`
   border: 1px solid #cecece0f;
   background: #1A1B20;
   margin: auto;
-  font-family: Arial, sans-serif;
+  margin-top: 125px;
 `;
 
 const LoginHeader = styled.div`

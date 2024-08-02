@@ -27,8 +27,8 @@ const App = () => {
 
   return (
     <>
-      <Header loggedUser={loggedUser} />
       <Router>
+        <Header loggedUser={loggedUser} />
         <Routes>
           <Route
             path="/login"
