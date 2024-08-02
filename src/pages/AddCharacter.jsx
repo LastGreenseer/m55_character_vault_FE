@@ -28,7 +28,7 @@ const AddChar = () => {
       );
 
       console.log("Successfully added character", response);
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       console.error("Failed to add character.", error);
     }
@@ -38,7 +38,7 @@ const AddChar = () => {
     <>
       <AddCharacterWrapper>
         <BackButton>
-          <h2><BackLink to="/Home">Back</BackLink></h2>
+          <h2><BackLink to="/">Back</BackLink></h2>
         </BackButton>
         <AddCharacterHeader>
           <h2>Please input your character's information</h2>
