@@ -33,7 +33,10 @@ const AddChar = () => {
 
   return (
     <>
-      <UpdateCharacterWrapper>
+      <AddCharacterWrapper>
+        <AddCharacterHeader>
+          <h2>Please input your character's information</h2>
+        </AddCharacterHeader>
         <AddCharacterForm onSubmit={handleSubmit}>
           <input
             onChange={(e) => handleChange(e, setName)}
@@ -67,14 +70,14 @@ const AddChar = () => {
           />
           <button type="submit">Add Character</button>
         </AddCharacterForm>
-      </UpdateCharacterWrapper>
+      </AddCharacterWrapper>
     </>
   );
 };
 
 export default AddChar;
 
-const UpdateCharacterWrapper = styled.div`
+const AddCharacterWrapper = styled.div`
   width: 100%;
   max-width: 556px;
   border-radius: 5px;
@@ -89,7 +92,9 @@ const AddCharacterForm = styled.form`
   width: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
+  margin: auto;
   input {
     height: 20px;
   }
@@ -101,57 +106,8 @@ const AddCharacterForm = styled.form`
   }
 `;
 
-const AddCharacterQuery = styled.div`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    input {
-        height: 20px;
-    }
-    button {
-        padding: 10px;
-        background: #359235;
-        border: 1px solid #000000d6;
-        color: white;
-    }
+const AddCharacterHeader = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
-
-{/* <div className="mainContainer">
-  <form onSubmit={handleSubmit} className="addCharacterForm">
-    <div className="addCharacterContainer">
-      <input
-        onChange={(e) => handleChange(e, setName)}
-        type="text"
-        placeholder="Name"
-        className="nameInput"
-      />
-      <input
-        onChange={(e) => handleChange(e, setAge)}
-        type="text"
-        placeholder="Age"
-        className="ageInput"
-      />
-      <input
-        onChange={(e) => handleChange(e, setPronouns)}
-        type="text"
-        placeholder="Pronouns"
-        className="pronounsInput"
-      />
-      <input
-        onChange={(e) => handleChange(e, setDescription)}
-        type="text"
-        placeholder="Description"
-        className="descriptionInput"
-      />
-      <input
-        onChange={(e) => handleChange(e, setBook)}
-        type="text"
-        placeholder="Book"
-        className="bookInput"
-      />
-      <button type="submit">Add Character</button>
-    </div>
-  </form>
-</div>; */}
