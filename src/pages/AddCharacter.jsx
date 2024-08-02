@@ -38,34 +38,34 @@ const AddChar = () => {
           <h2>Please input your character's information</h2>
         </AddCharacterHeader>
         <AddCharacterForm onSubmit={handleSubmit}>
+          <label>Name</label>
           <input
             onChange={(e) => handleChange(e, setName)}
             type="text"
-            placeholder="Name"
             className="nameInput"
           />
+          <label>Age</label>
           <input
             onChange={(e) => handleChange(e, setAge)}
             type="text"
-            placeholder="Age"
             className="ageInput"
           />
+          <label>Pronouns</label>
           <input
             onChange={(e) => handleChange(e, setPronouns)}
             type="text"
-            placeholder="Pronouns"
             className="pronounsInput"
           />
+          <label>Description</label>
           <input
             onChange={(e) => handleChange(e, setDescription)}
             type="text"
-            placeholder="Description"
             className="descriptionInput"
           />
+          <label>Book</label>
           <input
             onChange={(e) => handleChange(e, setBook)}
             type="text"
-            placeholder="Book"
             className="bookInput"
           />
           <button type="submit">Add Character</button>
@@ -82,8 +82,8 @@ const AddCharacterWrapper = styled.div`
   max-width: 556px;
   border-radius: 5px;
   padding: 15px;
-  border: 1px solid #cecece;
-  background: #fdfdfd;
+  border: 1px solid #cecece0f;
+  background: #1a1b20;
   margin: auto;
   font-family: Arial, sans-serif;
 `;
@@ -97,12 +97,31 @@ const AddCharacterForm = styled.form`
   margin: auto;
   input {
     height: 20px;
+    background-color: #1a1b20;
+    color: white;
+    border: 1px solid #5b5b5bbd;
+    border-radius: 0px;
+    outline: none;
+    padding: 12px;
+    font-size: 15px;
+
+    &:focus {
+      border-color: #909090;
+    }
   }
   button {
-    padding: 10px;
+    padding: 12px;
     background: #359235;
     border: 1px solid #000000d6;
     color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+
+    &:hover {
+      background: #2a732a;
+    }
   }
 `;
 
