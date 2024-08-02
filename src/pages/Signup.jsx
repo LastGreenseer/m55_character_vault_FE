@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SignupWrapper = styled.div`
@@ -112,33 +112,39 @@ const Signup = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5001/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
-          confirmPassword: confirmPassword
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/users/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+          }),
+        }
+      );
 
       if (!response.ok) {
         setErrors({ message: "Failed to create an account" });
       }
 
-      setSuccess({ message: "Account successfully created, automatically redirecting to login." });
+      setSuccess({
+        message:
+          "Account successfully created, automatically redirecting to login.",
+      });
 
       // Give slight delay to show success message.
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
-      setErrors(error)
+      setErrors(error);
     }
-  }
+  };
 
   return (
     <>
@@ -152,16 +158,18 @@ const Signup = () => {
             <b>Account successfully created</b>
             <p>{success.message}</p>
           </SuccessBox>
-        ) : ''}
+        ) : (
+          ""
+        )}
         <SignupForm onSubmit={handleSignup}>
           <label>Username</label>
-          <input 
+          <input
             value={username}
             type="text"
             onChange={(e) => setUsername(e.target.value)}
           />
           <label>Email Address</label>
-          <input 
+          <input
             value={email}
             type="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -182,7 +190,7 @@ const Signup = () => {
         </SignupForm>
       </SignupWrapper>
     </>
-  )
-}
+  );
+};
 
 export default Signup;

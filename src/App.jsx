@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import AddChar from "./pages/AddCharacter";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,6 +68,13 @@ const App = () => {
                 <Navigate to="/login" replace />
               )
             }
+          />
+          <Route
+            path="/add-character"
+            // element={
+            //   isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+            // }
+            element={<AddChar />}
           />
         </Routes>
       </Router>
