@@ -52,6 +52,10 @@ export const deleteAccount = async (id) => {
       }
     );
 
+    if (!response.ok) {
+      throw new Error('Failed to delete')
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
