@@ -105,7 +105,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: 90%;
   padding: 12px;
   border: 1px solid #5b5b5bbd;
   border-radius: 0;
