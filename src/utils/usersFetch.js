@@ -39,7 +39,7 @@ export const updateAcc = async (updateData) => {
   return data;
 };
 
-export const deleteAcc = async (id) => {
+export const deleteAccount = async (id) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/users/deleteAcc/${id}`,
@@ -52,9 +52,14 @@ export const deleteAcc = async (id) => {
       }
     );
 
+    if (!response.ok) {
+      throw new Error("Failed to delete");
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.log("Deletion error", error);
+    throw error;
   }
 };
