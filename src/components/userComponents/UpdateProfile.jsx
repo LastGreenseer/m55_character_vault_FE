@@ -31,7 +31,7 @@ const UpdateProfile = ({ loggedUser }) => {
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Label onClick={() => setEditUsername(true)}>
-            Username {editUsername ? "" : username}
+            Username{editUsername ? "" : username}
           </Label>
           {editUsername && (
             <Input
@@ -45,7 +45,7 @@ const UpdateProfile = ({ loggedUser }) => {
         </FormGroup>
         <FormGroup>
           <Label onClick={() => setEditEmail(true)}>
-            Email {editEmail ? "" : email}
+            Email{editEmail ? "" : email}
           </Label>
           {editEmail && (
             <Input
@@ -83,10 +83,11 @@ const UpdateWrapper = styled.div`
   max-width: 556px;
   border-radius: 5px;
   padding: 15px;
-  border: 1px solid #cecece;
-  background: #fdfdfd;
+  border: 1px solid #cecece0f;
+  background: #1a1b20;
   margin: auto;
-  font-family: Arial, sans-serif;
+  margin-top: 125px;
+  font-family: "Nunito", sans-serif;
 `;
 
 const FormGroup = styled.div`
@@ -105,24 +106,46 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 100%;
-  height: 20px;
-  padding: 5px;
-  border: 1px solid #cecece;
-  border-radius: 3px;
+  padding: 12px;
+  border: 1px solid #5b5b5bbd;
+  border-radius: 0;
+  outline: none;
+  background-color: #1a1b20;
+  color: white;
+  font-size: 15px;
+
+  &:focus {
+    border-color: #909090;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #383838 inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `;
 
 const Button = styled.button`
-  padding: 10px;
+  padding: 12px;
   background: #359235;
   border: 1px solid #000000d6;
   color: white;
   cursor: pointer;
+  border-radius: 4px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+
   &:hover {
-    background: #2d7c2d;
+    background: #2a732a;
   }
 `;
 
 const Message = styled.p`
   margin-top: 15px;
   color: #359235;
+  font-family: "Nunito", sans-serif;
 `;
