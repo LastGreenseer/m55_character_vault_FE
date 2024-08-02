@@ -103,7 +103,7 @@ export const getCharacter = async (name) => {
 };    
 
 
-export const getAllCharacters =  async () => {
+export const getAllCharacters =  async (id) => {
 
   try{
 
