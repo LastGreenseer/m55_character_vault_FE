@@ -9,7 +9,7 @@ const Header = ({ loggedUser }) => {
         {!loggedUser ? (
           <p>Please login</p>
         ) : (
-          <p>Hello {loggedUser.user.username}</p>
+          <p>Hello </p>
         )}
       </div>
     </StyledHeader>
