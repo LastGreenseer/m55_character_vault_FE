@@ -1,10 +1,8 @@
 import { login } from "../utils/usersFetch";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import Error from "../components/userComponents/Error";
+import styled from "styled-components";
 
 const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");

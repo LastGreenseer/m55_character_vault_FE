@@ -6,10 +6,10 @@ const Header = ({ loggedUser }) => {
     <StyledHeader>
       <div>
         <h1>Character Vault</h1>
-        {!loggedUser ? (
-          <p>Please login</p>
+        {loggedUser === null ? (
+          <p>Log in to unlock the Vault!</p>
         ) : (
-          <p>Hello {loggedUser.user.username}</p>
+          <p>Welcome {loggedUser.user.username}</p>
         )}
       </div>
     </StyledHeader>
