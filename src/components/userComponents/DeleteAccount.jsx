@@ -22,20 +22,19 @@ const handleDelete = async () => {
   } catch (error) {
     setMesasage(" an error occured:" + error.message);
   }
+
+  return (
+    <div>
+      <h1>Delete Account</h1>
+      <input
+        type="text"
+        placeholder="Enter User ID"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+      />
+      <button onClick={handleDelete}>Delete Account</button>
+      {message && <p>{message}</p>}
+    </div>
+  );
 };
-
-return (
-  <div>
-    <h1>Delete Account</h1>
-    <input
-      type="text"
-      placeholder="Enter User ID"
-      value={userId}
-      onChange={(e) => setUserId(e.target.value)}
-    />
-    <button onClick={handleDelete}>Delete Account</button>
-    {message && <p>{message}</p>}
-  </div>
-);
-
 export default DeleteAccount;
