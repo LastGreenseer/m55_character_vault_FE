@@ -17,18 +17,8 @@
 //     fetchAvatar();
 //   }, [style, seed]);
 
-//   //Inserting a raw HTML of a component can expose the application
-//   //We should consider alternitive methods off applying an avatar from the API
-//   //Such as refactoring the addCharacter function to assign an avatar on creation
-//   return (
-//     <AvatarWrapper>
-//       {avatar ? (
-//         <AvatarImage dangerousslySetInnerHTML={{ _html: avatar }} />
-//       ) : (
-//         <p>Loading avatar...</p>
-//       )}
-//     </AvatarWrapper>
-//   );
+//   return
+  
 // };
 
 // export default Avatar;
