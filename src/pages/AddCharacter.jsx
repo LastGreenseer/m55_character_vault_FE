@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { addCharacter } from "../utils/charFetch";
 import { useState } from "react";
@@ -9,6 +9,8 @@ const AddChar = () => {
   const [pronouns, setPronouns] = useState("");
   const [description, setDescription] = useState("");
   const [book, setBook] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e, setState) => {
     setState(e.target.value);
@@ -26,6 +28,7 @@ const AddChar = () => {
       );
 
       console.log("Successfully added character", response);
+      navigate("/home");
     } catch (error) {
       console.error("Failed to add character.", error);
     }
@@ -35,7 +38,7 @@ const AddChar = () => {
     <>
       <AddCharacterWrapper>
         <BackButton>
-          <h2><Link to="/Home">Back</Link></h2>
+          <h2><BackLink to="/Home">Back</BackLink></h2>
         </BackButton>
         <AddCharacterHeader>
           <h2>Please input your character's information</h2>
@@ -88,11 +91,11 @@ const AddCharacterWrapper = styled.div`
   border: 1px solid #cecece0f;
   background: #1a1b20;
   margin: auto;
-  font-family: "Rubik", sans-serif;
+  font-family: "Nunito", sans-serif;
 `;
 
 const AddCharacterForm = styled.form`
-  font-family: "Rubik", sans-serif;
+  font-family: "Nunito", sans-serif;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -134,14 +137,19 @@ const AddCharacterHeader = styled.div`
   justify-content: center;
 `;
 
-const BackButton = styled.div`
-  color: white;
-  text-decoration: none;
+const BackButton = styled(Link)`
   width: 25%;
   font-size: 15px;
   text-align: left;
-  font-family: "Rubik", sans-serif;
+  font-family: "Nunito", sans-serif;
   :hover {
     color: #dd901d;
   }
+`;
+
+const BackLink = styled(Link)`
+  text-decoration: none;
+  color: white;  
+  font-weight: bold; 
+  
 `;

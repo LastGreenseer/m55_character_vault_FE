@@ -71,10 +71,9 @@ const App = () => {
           />
           <Route
             path="/add-character"
-            // element={
-            //   isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
-            // }
-            element={<AddChar />}
+            element={
+              isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+            }
           />
         </Routes>
       </Router>
