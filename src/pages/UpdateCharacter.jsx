@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { updateCharacter } from "../../utils/charFetch";
 import { useState } from "react";
 
@@ -36,44 +37,51 @@ const UpdateChar = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <form onSubmit={handleSubmit} className="updateCharacterForm">
-        <div className="updateCharacterContainer">
-          <input
-            onChange={(e) => handleChange(e, setName)}
-            type="text"
-            placeholder="Name"
-            className="nameInput"
-          />
-          <input
-            onChange={(e) => handleChange(e, setAge)}
-            type="text"
-            placeholder="Age"
-            className="ageInput"
-          />
-          <input
-            onChange={(e) => handleChange(e, setPronouns)}
-            type="text"
-            placeholder="Pronouns"
-            className="pronounsInput"
-          />
-          <input
-            onChange={(e) => handleChange(e, setDescription)}
-            type="text"
-            placeholder="Description"
-            className="descriptionInput"
-          />
-          <input
-            onChange={(e) => handleChange(e, setBook)}
-            type="text"
-            placeholder="Book"
-            className="bookInput"
-          />
-          <button type="submit">update Character</button>
-        </div>
-      </form>
-    </div>
+   <>
+     <UpdateCharacterWrapper>
+    
+     </UpdateCharacterWrapper>
+   </>
   );
 };
 
 export default UpdateChar;
+
+
+<div className="mainContainer">
+  <form onSubmit={handleSubmit} className="updateCharacterForm">
+    <div className="updateCharacterContainer">
+      <input
+        onChange={(e) => handleChange(e, setName)}
+        type="text"
+        placeholder="Name"
+        className="nameInput"
+      />
+      <input
+        onChange={(e) => handleChange(e, setAge)}
+        type="text"
+        placeholder="Age"
+        className="ageInput"
+      />
+      <input
+        onChange={(e) => handleChange(e, setPronouns)}
+        type="text"
+        placeholder="Pronouns"
+        className="pronounsInput"
+      />
+      <input
+        onChange={(e) => handleChange(e, setDescription)}
+        type="text"
+        placeholder="Description"
+        className="descriptionInput"
+      />
+      <input
+        onChange={(e) => handleChange(e, setBook)}
+        type="text"
+        placeholder="Book"
+        className="bookInput"
+      />
+      <button type="submit">update Character</button>
+    </div>
+  </form>
+</div>;
