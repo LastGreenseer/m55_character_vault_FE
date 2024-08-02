@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { getAllCharactersFetch } from "../../utils/charFetch";
+import { useState, useEffect } from "react";
+import { getAllCharactersFetch } from "../../utils/charFetch/";
 
-//!!!!!!! dont not use this file
-
-const GetAllCharacters = () => {
+const GetCharacters = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -11,10 +9,7 @@ const GetAllCharacters = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
+       const data = await getAllCharactersFetch()
         setCharacters(data.characters);
       } catch (err) {
         setError("Error fetching characters");
@@ -43,7 +38,6 @@ const GetAllCharacters = () => {
             <h2>{character.name}</h2>
             <h3>{character.description}</h3>
             <p> {character.pronouns}</p>
-            {/* <getButton type="submit">get Character</getButton> */}
             <button className="get-button" type="click" onClick={handleClick}>
               Get Character
             </button>
@@ -53,3 +47,12 @@ const GetAllCharacters = () => {
     </div>
   );
 };
+
+export default GetCharacters;
+
+
+
+
+
+
+
