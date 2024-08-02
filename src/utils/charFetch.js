@@ -108,7 +108,7 @@ export const getAllCharacters =  async (id) => {
   try{
 
   const response = await fetch(
-  `${import.meta.env.VITE_BASE_URL}/char/getAllCharacter/`,
+  `${import.meta.env.VITE_BASE_URL}/char/getAllCharacter`,
 {
    method: "GET",
       mode: "cors",
