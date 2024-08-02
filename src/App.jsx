@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import AddChar from "./pages/AddCharacter";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,8 +28,8 @@ const App = () => {
 
   return (
     <>
-      <Header loggedUser={loggedUser} />
       <Router>
+        <Header loggedUser={loggedUser} />
         <Routes>
           <Route
             path="/login"
@@ -62,11 +63,21 @@ const App = () => {
             path="/profile"
             element={
               isLoggedIn ? (
-                <Profile loggedUser={loggedUser} />
+                <Profile
+                  loggedUser={loggedUser}
+                  logOrSignSetters={logOrSignSetters}
+                />
               ) : (
                 <Navigate to="/login" replace />
               )
             }
+          />
+          <Route
+            path="/add-character"
+            // element={
+            //   isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+            // }
+            element={<AddChar />}
           />
         </Routes>
       </Router>
@@ -77,6 +88,7 @@ const App = () => {
       <UpdateProfile loggedUser={loggedUser} />
       <AddChar />
       <Footer /> */}
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SignupWrapper = styled.div`
@@ -8,10 +8,10 @@ const SignupWrapper = styled.div`
   max-width: 556px;
   border-radius: 5px;
   padding: 15px;
-  border: 1px solid #cecece;
-  background: #fdfdfd;
+  border: 1px solid #cecece0f;
+  background: #1A1B20;
   margin: auto;
-  font-family: Arial, sans-serif;
+  margin-top: 125px;
 `;
 
 const SignupHeader = styled.div`
@@ -20,9 +20,17 @@ const SignupHeader = styled.div`
   h2 {
     padding-bottom: 0px;
     margin-bottom: 0px;
+    text-transform: uppercase;
+    font-family: "Rubik", sans-serif;
   }
   P {
     margin-top: 8px;
+    font-family: "Nunito", sans-serif;
+  }
+  .login-link {
+    font-weight: bold;
+    color: #359235;
+    text-decoration: none;
   }
 `;
 
@@ -31,14 +39,51 @@ const SignupForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  input {
-    height: 20px;
+  padding: 35px;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  
+  label {
+    font-weight: bold;
   }
+
+  input {
+    background-color: #383838;
+    color: white;
+    border: 1px solid #5b5b5bbd;
+    border-radius: 0px;
+    outline: none;
+    padding: 12px;
+    font-size: 15px;
+    
+    &:focus {
+      border-color: #909090;
+    }
+
+    /* Override autofill styles */
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #383838 inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+  
   button {
-    padding: 10px;
+    padding: 12px;
     background: #359235;
     border: 1px solid #000000d6;
     color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+    
+    &:hover {
+      background: #2a732a;
+    }
   }
 `;
 
@@ -67,56 +112,64 @@ const Signup = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5001/users/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
-          confirmPassword: confirmPassword
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/users/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+          }),
+        }
+      );
 
       if (!response.ok) {
         setErrors({ message: "Failed to create an account" });
       }
 
-      setSuccess({ message: "Account successfully created, automatically redirecting to login." });
+      setSuccess({
+        message:
+          "Account successfully created, automatically redirecting to login.",
+      });
 
       // Give slight delay to show success message.
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
-      setErrors(error)
+      setErrors(error);
     }
-  }
+  };
 
   return (
     <>
       <SignupWrapper>
         <SignupHeader>
           <h2>Create an account </h2>
-          <p>Already have an account? <Link to="/login">Login</Link></p>
+          <p>Already have an account? <Link className="login-link" to="/login">Login</Link></p>
         </SignupHeader>
         {success ? (
           <SuccessBox>
             <b>Account successfully created</b>
             <p>{success.message}</p>
           </SuccessBox>
-        ) : ''}
+        ) : (
+          ""
+        )}
         <SignupForm onSubmit={handleSignup}>
           <label>Username</label>
-          <input 
+          <input
             value={username}
             type="text"
             onChange={(e) => setUsername(e.target.value)}
           />
           <label>Email Address</label>
-          <input 
+          <input
             value={email}
             type="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -137,7 +190,7 @@ const Signup = () => {
         </SignupForm>
       </SignupWrapper>
     </>
-  )
-}
+  );
+};
 
 export default Signup;

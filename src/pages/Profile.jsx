@@ -1,19 +1,27 @@
-import styled from "styled-components";
+import React, { useState } from "react";
+import UpdateProfile from "../components/userComponents/UpdateProfile";
+// import DeleteAccount from "../components/DeleteAccount";
 
-const Profilewrapper = styled.div`
-  width: 100%;
-  max-width: 556px;
-  border-radius: 5px;
-  border: 1px solid black;
-  background: white;
-`;
+const Profile = ({ loggedUser, logOrSignSetters }) => {
+  const [isEditing, setIsEditing] = useState(false);
 
-const Profile = ({ loggedUser }) => {
+  const toggleEdit = () => {
+    setIsEditing((prev) => !prev);
+  };
+
   return (
-    <>
-      <h1>Profile </h1>
-      <Profilewrapper>Hello {loggedUser.user.username} </Profilewrapper>
-    </>
+    <div>
+      <h1>Profile</h1>
+      <div>
+        <p>Username: {loggedUser.user.username}</p>
+        <p>Email: {loggedUser.user.email}</p>
+      </div>
+      <button onClick={toggleEdit}>
+        {isEditing ? "Cancel Edit" : "Edit Profile"}
+      </button>
+      {isEditing && <UpdateProfile loggedUser={loggedUser} />}
+      {/* <DeleteAccount logOrSignSetters={logOrSignSetters} /> */}
+    </div>
   );
 };
 
