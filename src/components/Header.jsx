@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Header = ({ loggedUser }) => {
-
   return (
     <StyledHeader>
       <HeaderLeft>
-        <div className="site-title" onClick={() => navigate("/")}>Character<span>Vault</span></div>
+        <div className="site-title" onClick={() => navigate("/")}>
+          Character<span>Vault</span>
+        </div>
       </HeaderLeft>
       <HeaderRight>
         {!loggedUser || !loggedUser.user ? (
@@ -21,7 +22,11 @@ const Header = ({ loggedUser }) => {
           </StyledList>
         ) : (
           <StyledList>
-            <li>{loggedUser.user.username}</li>
+            <li>
+              <Link to={`/profile`} className="username-link">
+                {loggedUser.user.username}
+              </Link>
+            </li>
           </StyledList>
         )}
       </HeaderRight>
@@ -31,8 +36,8 @@ const Header = ({ loggedUser }) => {
 
 export default Header;
 
-const StyledHeader = styled.h1`
-  background: #1A1B20;
+const StyledHeader = styled.header`
+  background: #1a1b20;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -45,8 +50,9 @@ const HeaderLeft = styled.div`
   text-align: left;
   font-family: "Rubik", sans-serif;
   .site-title {
+    cursor: pointer;
     span {
-      color: #DD901D;
+      color: #dd901d;
     }
   }
 `;
@@ -57,10 +63,6 @@ const HeaderRight = styled.div`
   font-family: "Nunito", sans-serif;
   align-items: center;
   justify-content: flex-end;
-  li {
-    font-size: 20px;
-    list-style-type: none;
-  }
 `;
 
 const StyledList = styled.ul`
@@ -71,12 +73,22 @@ const StyledList = styled.ul`
   justify-content: flex-end;
   gap: 25px;
   li {
-    a {
-      color: white;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #DD901D;
-    }
+    list-style-type: none;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #dd901d;
+  }
+`;
+
+const ClickableUsername = styled(Link)`
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #dd901d;
   }
 `;

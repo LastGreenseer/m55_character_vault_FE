@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import UpdateProfile from "../components/userComponents/UpdateProfile";
 // import DeleteAccount from "../components/DeleteAccount";
 
 const Profile = ({ loggedUser, logOrSignSetters }) => {
+  const { id } = useParams();
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => {
