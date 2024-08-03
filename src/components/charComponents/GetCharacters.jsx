@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllCharactersFetch } from "../../utils/charFetch/";
+import styled from "styled-components";
 
 const GetCharacters = () => {
   const [characters, setCharacters] = useState([]);
@@ -53,53 +54,38 @@ const GetCharacters = () => {
 export default GetCharacters;
 
 
+
 const Container = styled.div`
-  text-align: center;
+  background-color: purple;
   padding: 20px;
-  background-color: #f0f0f0;
+  border-radius: 10px;
+  color: white;
+  min-height: 100vh;
 `;
 
-const Title = styled.h1`
-  font-size: 2em;
-  color: #333;
-`;
-
-const CharacterList = styled.ul`
-  list-style: none;
-  padding: 0;
+const CharacterListContainer = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
 `;
 
 const CharacterItem = styled.div`
   background-color: #fff;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #000;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 `;
 
-const CharacterName = styled.h2`
-  font-size: 1.5em;
-  color: #007bff;
-`;
-
-const CharacterDescription = styled.h3`
-  font-size: 1.2em;
-  color: #666;
-`;
-
-const CharacterPronouns = styled.p`
-  font-size: 1em;
-  color: #666;
-`;
-
-const Button = styled.button`
-  background-color: #007bff;
-  color: #fff;
+const GetButton = styled.button`
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
   border: none;
-  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+
   &:hover {
-    background-color: #0056b3;
+    background-color: white;
+    color: black;
   }
 `;
