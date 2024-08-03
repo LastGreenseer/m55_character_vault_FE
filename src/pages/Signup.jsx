@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Error from "../components/userComponents/Error";
 
 const SignupWrapper = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ const SignupWrapper = styled.div`
   border-radius: 5px;
   padding: 15px;
   border: 1px solid #cecece0f;
-  background: #1A1B20;
+  background: #1a1b20;
   margin: auto;
   margin-top: 125px;
 `;
@@ -42,7 +43,7 @@ const SignupForm = styled.form`
   padding: 35px;
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
-  
+
   label {
     font-weight: bold;
   }
@@ -55,7 +56,7 @@ const SignupForm = styled.form`
     outline: none;
     padding: 12px;
     font-size: 15px;
-    
+
     &:focus {
       border-color: #909090;
     }
@@ -70,7 +71,7 @@ const SignupForm = styled.form`
       transition: background-color 5000s ease-in-out 0s;
     }
   }
-  
+
   button {
     padding: 12px;
     background: #359235;
@@ -80,7 +81,7 @@ const SignupForm = styled.form`
     border-radius: 4px;
     margin-top: 15px;
     font-weight: bold;
-    
+
     &:hover {
       background: #2a732a;
     }
@@ -151,7 +152,12 @@ const Signup = () => {
       <SignupWrapper>
         <SignupHeader>
           <h2>Create an account </h2>
-          <p>Already have an account? <Link className="login-link" to="/login">Login</Link></p>
+          <p>
+            Already have an account?{" "}
+            <Link className="login-link" to="/login">
+              Login
+            </Link>
+          </p>
         </SignupHeader>
         {success ? (
           <SuccessBox>
