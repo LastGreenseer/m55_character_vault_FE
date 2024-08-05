@@ -53,7 +53,6 @@ const Home = () => {
     <>
       <div>
         <h1>Character Vault</h1>
-        <Link to="/profile">Profile</Link>
         {/* <GetCharacters/> */}
       </div>
       <MainWrapper>
