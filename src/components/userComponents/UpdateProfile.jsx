@@ -79,7 +79,7 @@ const UpdateProfile = ({ loggedUser }) => {
 export default UpdateProfile;
 
 const UpdateWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   max-width: 556px;
   border-radius: 5px;
   padding: 15px;
