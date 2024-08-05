@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header loggedUser={loggedUser} />
+        <Header loggedUser={loggedUser} logOrSignSetters={logOrSignSetters} />
         <Routes>
           <Route
             path="/login"
