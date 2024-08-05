@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Logout from "./userComponents/Logout";
 
-const Header = ({ loggedUser }) => {
+const Header = ({ loggedUser, logOrSignSetters }) => {
   const navigate = useNavigate();
+
+  console.log("Header Component - loggedUser", loggedUser);
 
   return (
     <StyledHeader>
@@ -29,6 +31,11 @@ const Header = ({ loggedUser }) => {
               <Link to={`/profile`} className="username-link">
                 {loggedUser.user.username}
               </Link>
+            </li>
+            <li>
+              <LogoutWrapper>
+                <Logout logOrSignSetters={logOrSignSetters} />
+              </LogoutWrapper>
             </li>
           </StyledList>
         )}
@@ -93,5 +100,19 @@ const ClickableUsername = styled(Link)`
   cursor: pointer;
   &:hover {
     color: #dd901d;
+  }
+`;
+
+const LogoutWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: #dd901d;
+    }
   }
 `;
