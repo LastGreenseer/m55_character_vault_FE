@@ -18,13 +18,20 @@ const Login = ({ logOrSignSetters }) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-
+  
     try {
       const data = await login(username, password);
+      
+      if (data.message === "user not found") {
+        setErrors({ error: true, message: "User not found" });
+        return;
+      }
+      
       if (data.error) {
         setErrors({ error: data.error, message: data.message });
         return;
       }
+      
       logOrSignSetters.setIsLoggedIn(true);
       logOrSignSetters.setLoggedUser(data);
       setUsername("");
@@ -34,6 +41,7 @@ const Login = ({ logOrSignSetters }) => {
       }, 2000);
     } catch (error) {
       console.log(error);
+      setErrors({ error: true, message: "An unexpected error occurred" });
     }
   };
 
