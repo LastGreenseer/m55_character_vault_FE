@@ -40,7 +40,6 @@ const Home = () => {
             <input type="text" placeholder="Character Name" />
             <button type="submit">Search Character</button>
           </SearchCharacter>
-          <SearchDivider />
           <AddNewCharacter>
             <StyledLink to="/add-character">Add New Character</StyledLink>
           </AddNewCharacter>
@@ -88,7 +87,6 @@ const MainWrapper = styled.div`
 `;
 
 const CharacterSearchWrapper = styled.div`
-  border: 2px solid red;
   width: 400px;
   margin-right: auto;
   margin-left: 10px;
@@ -166,14 +164,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SearchDivider = styled.div`
-  height: 1px; 
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: white;
-`;
-
 const CharacterWrapperMain = styled.div`
 
 `;
@@ -182,7 +172,6 @@ const CharacterListTitle = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  border: 2px solid red;
   width: 138vh;
   height: 20px;
   margin-left: auto;
@@ -195,7 +184,6 @@ const CharacterListTitle = styled.div`
 
 
 const CharacterListWrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
