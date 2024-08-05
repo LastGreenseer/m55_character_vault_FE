@@ -8,6 +8,7 @@ const ErrorBox = styled.div`
   padding: 16px 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 10px rgba(255, 59, 48, 0.1);
+  font-family: "Nunito", sans-serif;
 `;
 
 const ErrorTitle = styled.h3`
