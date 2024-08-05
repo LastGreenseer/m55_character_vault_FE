@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { addCharacter } from "../utils/charFetch";
+import { updateCharacter } from "../utils/charFetch";
 import { useState } from "react";
 
-const AddChar = () => {
+const UpdateChar = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -18,8 +18,14 @@ const AddChar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // if (!name || !age || !pronouns || !description || !book) {
+    //   setError("All fields are required.");
+    //   return;
+    // }
+
     try {
-      const response = await addCharacter(
+      const response = await updateCharacter(
         name,
         age,
         pronouns,
@@ -27,23 +33,24 @@ const AddChar = () => {
         book
       );
 
-      console.log("Successfully added character", response);
-      navigate("/");
+      console.log("Successfully updated character", response);
     } catch (error) {
-      console.error("Failed to add character.", error);
+      console.error("Failed to update character.", error);
     }
   };
 
   return (
     <>
-      <AddCharacterWrapper>
+      <UpdateCharacterWrapper>
         <BackButton>
-          <h2><BackLink to="/">Back</BackLink></h2>
+          <h2>
+            <BackLink to="/">Back</BackLink>
+          </h2>
         </BackButton>
-        <AddCharacterHeader>
-          <h2>Please input your character's information</h2>
-        </AddCharacterHeader>
-        <AddCharacterForm onSubmit={handleSubmit}>
+        <UpdateCharacterHeader>
+          <h2>Please update your character's information</h2>
+        </UpdateCharacterHeader>
+        <UpdateCharacterForm onSubmit={handleSubmit}>
           <label>Name</label>
           <input
             onChange={(e) => handleChange(e, setName)}
@@ -74,16 +81,16 @@ const AddChar = () => {
             type="text"
             className="bookInput"
           />
-          <button type="submit">Add Character</button>
-        </AddCharacterForm>
-      </AddCharacterWrapper>
+          <button type="submit">Update Character</button>
+        </UpdateCharacterForm>
+      </UpdateCharacterWrapper>
     </>
   );
 };
 
-export default AddChar;
+export default UpdateChar;
 
-const AddCharacterWrapper = styled.div`
+const UpdateCharacterWrapper = styled.div`
   width: 100%;
   max-width: 556px;
   border-radius: 5px;
@@ -94,7 +101,7 @@ const AddCharacterWrapper = styled.div`
   font-family: "Nunito", sans-serif;
 `;
 
-const AddCharacterForm = styled.form`
+const UpdateCharacterForm = styled.form`
   font-family: "Nunito", sans-serif;
   width: 50%;
   display: flex;
@@ -132,7 +139,7 @@ const AddCharacterForm = styled.form`
   }
 `;
 
-const AddCharacterHeader = styled.div`
+const UpdateCharacterHeader = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -149,7 +156,6 @@ const BackButton = styled(Link)`
 
 const BackLink = styled(Link)`
   text-decoration: none;
-  color: white;  
-  font-weight: bold; 
-  
+  color: white;
+  font-weight: bold;
 `;

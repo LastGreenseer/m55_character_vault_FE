@@ -14,6 +14,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import AddChar from "./pages/AddCharacter";
+import UpdateChar from "./pages/UpdateCharacter";
 
 
 const App = () => {
@@ -75,10 +76,18 @@ const App = () => {
           />
           <Route
             path="/add-character"
+            element={
+              isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+            }
+          />
+          <Route
+            path="/update-character"
             // element={
-            //   isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+            //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
             // }
-            element={<AddChar />}
+            element={
+              <UpdateChar/>
+            }
           />
         </Routes>
       </Router>
