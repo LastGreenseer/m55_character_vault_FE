@@ -86,6 +86,7 @@ const Home = () => {
                   </PronounsContainer>
                 </AgePronounsContainer>
                 <button type="submit">View Character</button>
+                <button tpye="submit">Delete Character</button>
               </CharacterContainer>
             ))}
           </CharacterListWrapper>
