@@ -14,6 +14,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import AddChar from "./pages/AddCharacter";
+import CharacterInfo from "./pages/CharacterInfo";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
