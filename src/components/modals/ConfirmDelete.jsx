@@ -23,3 +23,13 @@ const ConfirmDelete = ({ show, onClose, onConfirm, characterName }) => {
     </ModalWrapper>
   );
 };
+
+export default ConfirmDelete;
+
+const ModalWrapper = styled.div``;
+
+const ModalContent = styled.div``;
+
+const ModalHeader = styled.h2``;
+
+// const ModalBody = 
