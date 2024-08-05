@@ -36,8 +36,18 @@ const testCharacters = [
   },
 ];
 
+const generateAvatarUrl = (name) => {
+  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(name)}`;
+};
+
+
 const Home = () => {
-  const [characters, setCharacters] = useState(testCharacters);
+  const [characters, setCharacters] = useState(() => 
+    testCharacters.map(char => ({
+      ...char,
+      image: generateAvatarUrl(char.name)
+    }))
+  );
 
   return (
     <>
@@ -63,12 +73,7 @@ const Home = () => {
           <CharacterListWrapper>
             {characters.map((character) => (
               <CharacterContainer key={character.id}>
-                <PlaceholderCircle
-                  style={{
-                    backgroundImage: `url(${character.image})`,
-                    backgroundSize: "cover",
-                  }}
-                />
+                <PlaceholderCircle style={{ backgroundImage: `url("${character.image}")` }} />
                 <h2>{character.name}</h2>
                 <AgePronounsContainer>
                   <AgeContainer>
@@ -280,4 +285,6 @@ const PlaceholderCircle = styled.div`
   height: 10vh;
   background-color: grey;
   border-radius: 50%;
+  background-size: cover;
+  background-position: center;
 `;
