@@ -42,33 +42,38 @@ const Home = () => {
         </SearchCharacter>
         <SearchDivider />
         <AddNewCharacter>
-          <button type="submit">Add New Character</button>
+          <button type="submit"> Add New Character</button>
         </AddNewCharacter>
       </CharacterSearchWrapper>
       <CharacterWrapperMain>
-        {characters.map((character) => (
-          <CharacterContainer key={character.id}>
-            <PlaceholderCircle
-              style={{
-                backgroundImage: `url(${character.image})`,
-                backgroundSize: "cover",
-              }}
-            />
-            <h2>{character.name}</h2>
-            <AgePronounsContainer>
-              <AgeContainer>
-                <BoldText>{character.age}</BoldText>
-                <SubText>years old</SubText>
-              </AgeContainer>
-              <Divider />
-              <PronounsContainer>
-                <BoldText>{character.pronouns}</BoldText>
-                <SubText>pronouns</SubText>
-              </PronounsContainer>
-            </AgePronounsContainer>
-            <button type="submit">View Character</button>
-          </CharacterContainer>
-        ))}
+        <CharacterListTitle>
+          <h2>Characters</h2>
+        </CharacterListTitle>
+        <CharacterListWrapper>
+          {characters.map((character) => (
+            <CharacterContainer key={character.id}>
+              <PlaceholderCircle
+                style={{
+                  backgroundImage: `url(${character.image})`,
+                  backgroundSize: "cover",
+                }}
+              />
+              <h2>{character.name}</h2>
+              <AgePronounsContainer>
+                <AgeContainer>
+                  <BoldText>{character.age}</BoldText>
+                  <SubText>years old</SubText>
+                </AgeContainer>
+                <Divider />
+                <PronounsContainer>
+                  <BoldText>{character.pronouns}</BoldText>
+                  <SubText>pronouns</SubText>
+                </PronounsContainer>
+              </AgePronounsContainer>
+              <button type="submit">View Character</button>
+            </CharacterContainer>
+          ))}
+        </CharacterListWrapper>
       </CharacterWrapperMain>
     </>
   );
@@ -154,6 +159,15 @@ const SearchDivider = styled.div`
 `;
 
 const CharacterWrapperMain = styled.div`
+
+`;
+
+const CharacterListTitle = styled.div`
+
+`;
+
+
+const CharacterListWrapper = styled.div`
   /* border: 2px solid red; */
   display: flex;
   flex-direction: row;
