@@ -35,61 +35,67 @@ const Home = () => {
         <Link to="/add-character">Add Character</Link>
         {/* <GetCharacters/> */}
       </div>
-      <CharacterSearchWrapper>
-        <SearchCharacter>
-          <input type="text" placeholder="Character Name" />
-          <button type="submit">Search Character</button>
-        </SearchCharacter>
-        <SearchDivider />
-        <AddNewCharacter>
-          <button type="submit"> Add New Character</button>
-        </AddNewCharacter>
-      </CharacterSearchWrapper>
-      <CharacterWrapperMain>
-        <CharacterListTitle>
-          <h2>Characters</h2>
-        </CharacterListTitle>
-        <CharacterListWrapper>
-          {characters.map((character) => (
-            <CharacterContainer key={character.id}>
-              <PlaceholderCircle
-                style={{
-                  backgroundImage: `url(${character.image})`,
-                  backgroundSize: "cover",
-                }}
-              />
-              <h2>{character.name}</h2>
-              <AgePronounsContainer>
-                <AgeContainer>
-                  <BoldText>{character.age}</BoldText>
-                  <SubText>years old</SubText>
-                </AgeContainer>
-                <Divider />
-                <PronounsContainer>
-                  <BoldText>{character.pronouns}</BoldText>
-                  <SubText>pronouns</SubText>
-                </PronounsContainer>
-              </AgePronounsContainer>
-              <button type="submit">View Character</button>
-            </CharacterContainer>
-          ))}
-        </CharacterListWrapper>
-      </CharacterWrapperMain>
+      <MainWrapper>
+        <CharacterSearchWrapper>
+          <SearchCharacter>
+            <input type="text" placeholder="Character Name" />
+            <button type="submit">Search Character</button>
+          </SearchCharacter>
+          <SearchDivider />
+          <AddNewCharacter>
+            <button type="submit"> Add New Character</button>
+          </AddNewCharacter>
+        </CharacterSearchWrapper>
+        <CharacterWrapperMain>
+          <CharacterListTitle>
+            <h2>Characters</h2>
+          </CharacterListTitle>
+          <CharacterListWrapper>
+            {characters.map((character) => (
+              <CharacterContainer key={character.id}>
+                <PlaceholderCircle
+                  style={{
+                    backgroundImage: `url(${character.image})`,
+                    backgroundSize: "cover",
+                  }}
+                />
+                <h2>{character.name}</h2>
+                <AgePronounsContainer>
+                  <AgeContainer>
+                    <BoldText>{character.age}</BoldText>
+                    <SubText>years old</SubText>
+                  </AgeContainer>
+                  <Divider />
+                  <PronounsContainer>
+                    <BoldText>{character.pronouns}</BoldText>
+                    <SubText>pronouns</SubText>
+                  </PronounsContainer>
+                </AgePronounsContainer>
+                <button type="submit">View Character</button>
+              </CharacterContainer>
+            ))}
+          </CharacterListWrapper>
+        </CharacterWrapperMain>
+      </MainWrapper>
     </>
   );
 };
 
 export default Home;
 
+const MainWrapper = styled.div`
+  display: flex;
+
+`;
+
 const CharacterSearchWrapper = styled.div`
-  /* border: 2px solid red; */
+  border: 2px solid red;
   width: 400px;
   margin-right: auto;
   margin-left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
 
 `;
 
@@ -163,12 +169,23 @@ const CharacterWrapperMain = styled.div`
 `;
 
 const CharacterListTitle = styled.div`
-
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border: 2px solid red;
+  width: 138vh;
+  height: 20px;
+  margin-left: auto;
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding: 10px;
 `;
 
 
 const CharacterListWrapper = styled.div`
-  /* border: 2px solid red; */
+  border: 2px solid red;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
