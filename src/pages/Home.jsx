@@ -40,8 +40,9 @@ const Home = () => {
           <input type="text" placeholder="Character Name" />
           <button type="submit">Search Character</button>
         </SearchCharacter>
+        <SearchDivider />
         <AddNewCharacter>
-          <button type="submit">Add Character</button>
+          <button type="submit">Add New Character</button>
         </AddNewCharacter>
       </CharacterSearchWrapper>
       <CharacterWrapperMain>
@@ -76,39 +77,44 @@ const Home = () => {
 export default Home;
 
 const CharacterSearchWrapper = styled.div`
-  border: 2px solid red;
-  width: 30vh;
+  /* border: 2px solid red; */
+  width: 400px;
   margin-right: auto;
   margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 `;
 
 const SearchCharacter = styled.div`
+  width: 100%;
+
   input,
   button {
-    height: 40px; 
-    width: 90%; 
+    height: 40px;
+    width: 90%;
     background-color: #1a1b20;
     color: white;
     border: 1px solid #5b5b5bbd;
-    border-radius: 0px; 
+    border-radius: 4px;
     outline: none;
-    padding: 0 10px; 
-    font-size: 15px; 
-    box-sizing: border-box; 
+    padding: 0 10px;
+    font-size: 15px;
+    box-sizing: border-box;
   }
 
-  
   button {
     background: #359235;
     border: 1px solid #000000d6;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 5px; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
+    margin-top: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   input:focus,
@@ -117,7 +123,35 @@ const SearchCharacter = styled.div`
   }
 `;
 
-const AddNewCharacter = styled.div``;
+const AddNewCharacter = styled.div`
+  width: 100%;
+
+  button {
+    height: 40px;
+    width: 90%;
+    background: #359235;
+    padding: 0 10px;
+    color: white;
+    font-size: 15px;
+    border: 1px solid #000000d6;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+`;
+
+const SearchDivider = styled.div`
+  height: 1px; 
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+`;
 
 const CharacterWrapperMain = styled.div`
   /* border: 2px solid red; */
