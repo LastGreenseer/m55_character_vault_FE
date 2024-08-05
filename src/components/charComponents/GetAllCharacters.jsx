@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { getAllCharacters } from "../../utils/charFetch";
+import { getAllCharactersFetch } from "../../utils/charFetch";
 
-const getAllCharacters = () => {
+//!!!!!!! dont not use this file
+
+const GetAllCharacters = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -27,20 +29,27 @@ const getAllCharacters = () => {
   if (loading) return <p>Loading characters...</p>;
   if (error) return <p>{error}</p>;
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("click for character");
+  };
+
   return (
     <div>
       <h1>Character List</h1>
       <ul>
         {characters.map((character) => (
-          <li key={character.id}>
+          <div key={character.id}>
             <h2>{character.name}</h2>
             <h3>{character.description}</h3>
-            <p> { character.pronouns}</p>
-          </li>
+            <p> {character.pronouns}</p>
+            {/* <getButton type="submit">get Character</getButton> */}
+            <button className="get-button" type="click" onClick={handleClick}>
+              Get Character
+            </button>
+          </div>
         ))}
       </ul>
     </div>
   );
 };
-
-export default getAllCharacters;

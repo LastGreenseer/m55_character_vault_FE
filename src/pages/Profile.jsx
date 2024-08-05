@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import UpdateProfile from "../components/userComponents/UpdateProfile";
+
 // import DeleteAccount from "../components/DeleteAccount";
 
 const Profile = ({ loggedUser, logOrSignSetters }) => {

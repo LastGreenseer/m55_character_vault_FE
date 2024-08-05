@@ -85,7 +85,7 @@ export const deleteCharacter = async (name) => {
   }
 };
 
-export const getCharacter = async (name) => {
+export const getCharacterFetch = async (name) => {
   const response = await fetch(
     `${import.meta.env.VITE_BASE_URL}/char/getCharacter/${name}`,
     {
@@ -100,24 +100,21 @@ export const getCharacter = async (name) => {
   const data = await response.json();
   console.log(data);
   return data;
-};    
+};
 
-
-export const getAllCharacters =  async (id) => {
-
-  try{
-
-  const response = await fetch(
-  `${import.meta.env.VITE_BASE_URL}/char/getAllCharacter`,
-{
-   method: "GET",
-      mode: "cors",
-      headers: {
+export const getAllCharactersFetch = async () => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/char/getAllCharacters`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
           "Content-Type": "application/json",
         },
       }
-    )
- const data = await response.json();
+    );
+    const data = await response.json();
     console.log("data ", data);
     return data;
   } catch (error) {

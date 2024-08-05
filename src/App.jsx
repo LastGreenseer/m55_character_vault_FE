@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 import AddChar from "./pages/AddCharacter";
 import UpdateChar from "./pages/UpdateCharacter";
 
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
