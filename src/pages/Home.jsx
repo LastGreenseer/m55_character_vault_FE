@@ -22,6 +22,18 @@ const testCharacters = [
     age: 40,
     pronouns: "They/Them",
   },
+  {
+    id: 4,
+    name: "James Bonder",
+    age: 40,
+    pronouns: "They/Them",
+  },
+  {
+    id: 4,
+    name: "James Bondest",
+    age: 40,
+    pronouns: "They/Them",
+  },
 ];
 
 const Home = () => {
