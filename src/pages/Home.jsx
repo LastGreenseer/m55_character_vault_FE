@@ -38,9 +38,11 @@ const Home = () => {
       <CharacterSearchWrapper>
         <SearchCharacter>
           <input type="text" placeholder="Character Name" />
-          <button type="submit" >Search Character</button>
+          <button type="submit">Search Character</button>
         </SearchCharacter>
-        <AddNewCharacter></AddNewCharacter>
+        <AddNewCharacter>
+          <button type="submit">Add Character</button>
+        </AddNewCharacter>
       </CharacterSearchWrapper>
       <CharacterWrapperMain>
         {characters.map((character) => (
@@ -81,6 +83,41 @@ const CharacterSearchWrapper = styled.div`
 
 `;
 
+const SearchCharacter = styled.div`
+  input,
+  button {
+    height: 40px; 
+    width: 90%; 
+    background-color: #1a1b20;
+    color: white;
+    border: 1px solid #5b5b5bbd;
+    border-radius: 0px; 
+    outline: none;
+    padding: 0 10px; 
+    font-size: 15px; 
+    box-sizing: border-box; 
+  }
+
+  
+  button {
+    background: #359235;
+    border: 1px solid #000000d6;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+  }
+
+  input:focus,
+  button:focus {
+    border-color: #909090;
+  }
+`;
+
+const AddNewCharacter = styled.div``;
 
 const CharacterWrapperMain = styled.div`
   /* border: 2px solid red; */
