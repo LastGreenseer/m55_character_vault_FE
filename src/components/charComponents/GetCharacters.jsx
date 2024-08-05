@@ -34,26 +34,23 @@ const GetCharacters = () => {
     <Container>
       <div>
         <h1>Character List</h1>
-        <ul>
-          {characters.map((character) => (
-            <div key={character.id}>
-              <h2>{character.name}</h2>
-              <h3>{character.description}</h3>
-              <p> {character.pronouns}</p>
-              <button className="get-button" type="click" onClick={handleClick}>
-                Get Character
-              </button>
-            </div>
-          ))}
-        </ul>
+
+        {characters.map((character) => (
+          <div key={character.id}>
+            <h2>{character.name}</h2>
+            <h3>{character.description}</h3>
+            <p> {character.pronouns}</p>
+            <button className="get-button" type="click" onClick={handleClick}>
+              Get Character
+            </button>
+          </div>
+        ))}
       </div>
     </Container>
   );
 };
 
 export default GetCharacters;
-
-
 
 const Container = styled.div`
   background-color: purple;
