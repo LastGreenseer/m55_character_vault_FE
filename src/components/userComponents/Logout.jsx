@@ -1,27 +1,20 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Logout = ({ logOrSignSetters }) => {
-  const [message, setMessage] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     try {
       logOrSignSetters.setLoggedUser(null);
       logOrSignSetters.setIsLoggedIn(false);
-      setMessage("Logged out successfully");
-      history.push("/login");
+      navigate("/login");
     } catch (error) {
-      setMessage("Error: " + error.message);
+      console.error("Error logging out", error);
     }
   };
 
-  return (
-    <div>
-      <button onClick={handleLogout}>Logout</button>
-      {message && <p>{message}</p>}
-    </div>
-  );
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
 export default Logout;
