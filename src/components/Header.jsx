@@ -106,6 +106,7 @@ const ClickableUsername = styled(Link)`
 const LogoutWrapper = styled.div`
   display: flex;
   align-items: center;
+  padding: 3px;
   button {
     background: none;
     border: none;
