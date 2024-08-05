@@ -32,7 +32,6 @@ const Home = () => {
       <div>
         <h1>Character Vault</h1>
         <Link to="/profile">Profile</Link>
-        <Link to="/add-character">Add Character</Link>
         {/* <GetCharacters/> */}
       </div>
       <MainWrapper>
@@ -43,7 +42,7 @@ const Home = () => {
           </SearchCharacter>
           <SearchDivider />
           <AddNewCharacter>
-            <button type="submit"> Add New Character</button>
+            <StyledLink to="/add-character">Add New Character</StyledLink>
           </AddNewCharacter>
         </CharacterSearchWrapper>
         <CharacterWrapperMain>
@@ -136,23 +135,34 @@ const SearchCharacter = styled.div`
 
 const AddNewCharacter = styled.div`
   width: 100%;
+`;
 
-  button {
-    height: 40px;
-    width: 90%;
-    background: #359235;
-    padding: 0 10px;
-    color: white;
-    font-size: 15px;
-    border: 1px solid #000000d6;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-top: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+const StyledLink = styled(Link)`
+  height: 40px;
+  width: 90%;
+  background-color: #359235; 
+  color: white;
+  border: 1px solid #000000d6; 
+  border-radius: 4px;
+  outline: none;
+  padding: 0 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+
+  &:hover {
+    background-color: #2a732a;
+  }
+
+  &:focus {
+    border-color: #909090;
   }
 `;
 
@@ -222,19 +232,7 @@ const CharacterContainer = styled.div`
   }
 `;
 
-// @media (max-width: 1200px) {
-//   const CharacterContainer = styled.div`
-//     width: 120px;
-//     height: 160px;
-//   `;
-// }
 
-// @media (max-width: 800px) {
-//   const CharacterContainer = styled.div`
-//     width: 100px;
-//     height: 140px;
-//   `;
-// }
 
 const AgePronounsContainer = styled.div`
   background: #0c0d0f;
@@ -250,18 +248,18 @@ const AgeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px; /* Adjust as needed */
+  margin-right: 20px; 
 `;
 
 const PronounsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px; /* Adjust as needed */
+  margin-left: 20px; 
 `;
 
 const Divider = styled.div`
-  height: 50px; /* Adjust as needed */
+  height: 50px; 
   width: 1px;
   background-color: #333;
 `;
