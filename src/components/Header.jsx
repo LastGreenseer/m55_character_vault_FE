@@ -28,9 +28,9 @@ const Header = ({ loggedUser, logOrSignSetters }) => {
         ) : (
           <StyledList>
             <li>
-              <Link to={`/profile`} className="username-link">
+              <ClickableUsername to={`/profile`}>
                 {loggedUser.user.username}
-              </Link>
+              </ClickableUsername>
             </li>
             <li>
               <LogoutWrapper>
