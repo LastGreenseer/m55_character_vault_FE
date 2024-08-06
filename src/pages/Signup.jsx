@@ -106,7 +106,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState();
 
   const [success, setSuccess] = useState();
-const [errors, setErrors] =useState();
+  const [errors, setErrors] = useState();
   const navigate = useNavigate();
 
   const handleSignup = async (event) => {

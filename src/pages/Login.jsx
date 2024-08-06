@@ -18,22 +18,24 @@ const Login = ({ logOrSignSetters }) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-  
+
     try {
       const data = await login(username, password);
-      
+
       if (data.message === "user not found") {
         setErrors({ error: true, message: "User not found" });
         return;
       }
-      
+
       if (data.error) {
         setErrors({ error: data.error, message: data.message });
         return;
       }
-      
+
       logOrSignSetters.setIsLoggedIn(true);
-      logOrSignSetters.setLoggedUser(data);
+      logOrSignSetters.setLoggedUser(data.user);
+      logOrSignSetters.setUserCharacters(data.characters);
+
       setUsername("");
       setPassword("");
       setTimeout(() => {
@@ -51,7 +53,10 @@ const Login = ({ logOrSignSetters }) => {
         <LoginHeader>
           <h2>Login</h2>
           <p>
-            Don't have an account? <Link className="signup-link" to="/signup">Signup</Link>
+            Don't have an account?{" "}
+            <Link className="signup-link" to="/signup">
+              Signup
+            </Link>
           </p>
         </LoginHeader>
         {errors?.error ? (
@@ -90,7 +95,7 @@ const LoginWrapper = styled.div`
   border-radius: 5px;
   padding: 15px;
   border: 1px solid #cecece0f;
-  background: #1A1B20;
+  background: #1a1b20;
   margin: auto;
   margin-top: 125px;
 `;
@@ -123,20 +128,20 @@ const LoginForm = styled.form`
   padding: 35px;
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
-  
+
   label {
     font-weight: bold;
   }
 
   input {
-    background-color: #1A1B20;
+    background-color: #1a1b20;
     color: white;
     border: 1px solid #5b5b5bbd;
     border-radius: 0px;
     outline: none;
     padding: 12px;
     font-size: 15px;
-    
+
     &:focus {
       border-color: #909090;
     }
@@ -151,7 +156,7 @@ const LoginForm = styled.form`
       transition: background-color 5000s ease-in-out 0s;
     }
   }
-  
+
   button {
     padding: 12px;
     background: #359235;
@@ -161,7 +166,7 @@ const LoginForm = styled.form`
     border-radius: 4px;
     margin-top: 15px;
     font-weight: bold;
-    
+
     &:hover {
       background: #2a732a;
     }

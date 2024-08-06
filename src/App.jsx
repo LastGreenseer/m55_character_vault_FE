@@ -16,12 +16,15 @@ import Home from "./pages/Home";
 import AddChar from "./pages/AddCharacter";
 import UpdateChar from "./pages/UpdateCharacter";
 
-
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
 
+  const [userCharacters, setUserCharacters] = useState([]);
+
   const logOrSignSetters = {
+    userCharacters,
+    setUserCharacters,
     isLoggedIn,
     setIsLoggedIn,
     loggedUser,
@@ -55,7 +58,7 @@ const App = () => {
             path="/"
             element={
               isLoggedIn ? (
-                <Home user={loggedUser} />
+                <Home user={loggedUser} userCharacters={userCharacters} />
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -77,7 +80,11 @@ const App = () => {
           <Route
             path="/add-character"
             element={
-              isLoggedIn ? <AddChar /> : <Navigate to="/login" replace />
+              isLoggedIn ? (
+                <AddChar loggedUser={loggedUser} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
             }
           />
           <Route
@@ -85,9 +92,7 @@ const App = () => {
             // element={
             //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
             // }
-            element={
-              <UpdateChar/>
-            }
+            element={<UpdateChar />}
           />
         </Routes>
       </Router>

@@ -1,4 +1,11 @@
-export const addCharacter = async (name, age, pronouns, description, book) => {
+export const addCharacter = async (
+  name,
+  age,
+  pronouns,
+  description,
+  book,
+  userId
+) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/addCharacter`,
@@ -14,6 +21,7 @@ export const addCharacter = async (name, age, pronouns, description, book) => {
           pronouns: pronouns,
           description: description,
           book: book,
+          userId: userId,
         }),
       }
     );
