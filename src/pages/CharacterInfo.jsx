@@ -21,21 +21,29 @@ const CharacterInfo = () => {
     <>
       <MainWrapper>
         <InfoWrapperMain>
-          <InfoWrapperName>
-            <PlaceholderCircle
-              style={{ backgroundImage: `url("${character.image}")` }}
-            />
-            <BoldText>{character.name}</BoldText>
-            <SubText>{character.pronouns}</SubText>
-          </InfoWrapperName>
-          <InfoWrapperBiography>
-            <BoldText>Biography</BoldText>
-            <SubText>{character.description}</SubText>
-          </InfoWrapperBiography>
-          <InfoWrapperBooks>
-            <BoldText>Books</BoldText>
-            <SubText>{character.book}</SubText>
-          </InfoWrapperBooks>
+          <InfoWrapperChar>
+            <AvatarWrapper>
+              <PlaceholderCircle
+                style={{ backgroundImage: `url("${character.image}")` }}
+              />
+            </AvatarWrapper>
+            <NamePronounsWrapper>
+              <BoldText>{character.name}</BoldText>
+              <SubText>{character.pronouns}</SubText>
+            </NamePronounsWrapper>
+          </InfoWrapperChar>
+          <BiographyWrapperMain>
+            <InfoWrapperBiography>
+              <BoldText>Biography</BoldText>
+              <SubText>{character.description}</SubText>
+            </InfoWrapperBiography>
+          </BiographyWrapperMain>
+          <BookWrapperMain>
+            <InfoWrapperBooks>
+              <BoldText>Books</BoldText>
+              <SubText>{character.book}</SubText>
+            </InfoWrapperBooks>
+          </BookWrapperMain>
         </InfoWrapperMain>
         <ManagementWrapperMain>
           <UpdateCharacterWrapper></UpdateCharacterWrapper>
@@ -49,18 +57,58 @@ const CharacterInfo = () => {
 export default CharacterInfo;
 
 const MainWrapper = styled.div`
+    border: 2px solid red;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    
+`;
+
+const InfoWrapperMain = styled.div`
+  background: #1a1b20;
+  border-radius: 5px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 10px; */
+`;
+
+const InfoWrapperChar = styled.div`
+  padding: 40px 40px;
+  display: flex;
+`;
+
+const AvatarWrapper = styled.div``;
+
+const NamePronounsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 20px;
+`;
+
+const BiographyWrapperMain = styled.div`
+    display: flex;
     justify-content: center;
 `;
 
-const InfoWrapperMain = styled.div``;
+const InfoWrapperBiography = styled.div`
+  padding: 40px 40px;
+  background: #2d2e31;
+  width: 90%;
+  border-radius: 5px;
+  
+`;
 
-const InfoWrapperName = styled.div``;
+const BookWrapperMain = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-const InfoWrapperBiography = styled.div``;
-
-const InfoWrapperBooks = styled.div``;
+const InfoWrapperBooks = styled.div`
+  padding: 40px 40px;
+  width: 90%;
+`;
 
 const ManagementWrapperMain = styled.div``;
 
