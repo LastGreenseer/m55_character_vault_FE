@@ -26,10 +26,39 @@ const ConfirmDelete = ({ show, onClose, onConfirm, characterName }) => {
 
 export default ConfirmDelete;
 
-const ModalWrapper = styled.div``;
+const ModalWrapper = styled.div`
+position: fixed;
+display: flex;
+justify-content: center;
+`;
 
-const ModalContent = styled.div``;
+const ModalContent = styled.div`
+background: white;
+padding: 20px;
+`;
 
-const ModalHeader = styled.h2``;
+const ModalHeader = styled.h2`
+display: flex;
+justify-content: flex-end;
+button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer
+}
+`;
 
-// const ModalBody = 
+const ModalBody = styled.div`
+margin-bottom: 20px;
+`;
+
+const ModalFooter = styled.div`
+display: flex;
+justify-content: flex-end;
+gap: 10px;
+button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+`;
