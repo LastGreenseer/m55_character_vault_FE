@@ -17,6 +17,14 @@ const CharacterInfo = () => {
 
             </InfoWrapperBooks>
           </InfoWrapperMain>
+          <ManagementWrapperMain>
+            <UpdateCharacterWrapper>
+
+            </UpdateCharacterWrapper>
+            <DeleteCharacterWrapper>
+
+            </DeleteCharacterWrapper>
+          </ManagementWrapperMain>
         </MainWrapper>
       </>
     );
@@ -41,5 +49,17 @@ const InfoWrapperBiography = styled.div`
 `;
 
 const InfoWrapperBooks = styled.div`
+
+`;
+
+const ManagementWrapperMain = styled.div`
+
+`;
+
+const UpdateCharacterWrapper = styled.div`
+
+`;
+
+const DeleteCharacterWrapper = styled.div`
 
 `;
