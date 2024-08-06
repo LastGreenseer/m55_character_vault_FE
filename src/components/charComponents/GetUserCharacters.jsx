@@ -46,8 +46,15 @@ const GetUserCharacters = ({ userCharacters }) => {
                 <SubText>pronouns</SubText>
               </PronounsContainer>
             </AgePronounsContainer>
-            <button type="submit">View Character</button>
-            <button tpye="submit">Delete Character</button>
+            <StyledLink
+              to={`/character-info/${character.id}`}
+              state={{ character }}
+            >
+              View Character
+            </StyledLink>
+            <button onClick={() => handleDeleteClick(character)}>
+              Delete Character
+            </button>
           </CharacterContainer>
         ))
       )}
