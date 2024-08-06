@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import GetUserCharacters from "../components/charComponents/GetUserCharacters";
-import GetCharacters from "../components/charComponents/GetCharacters";
-import ConfirmDelete from "../components/modals/ConfirmDelete";
-import { deleteCharacter } from "../utils/charFetch";
 
 import styled from "styled-components";
 
@@ -12,37 +9,6 @@ const Home = ({ userCharacters }) => {
   if (userCharacters === undefined) {
     return <p>loading...</p>;
   }
-
-  // //----------------ConfirmDelete Modal-------------------
-  // const [showModal, setShowModal] = useState(false);
-  // const [characterToDelete, setCharacterToDelete] = useState(null);
-  // const [message, setMessage] = useState("");
-
-  // const handleDeleteClick = (character) => {
-  //   setCharacterToDelete(character);
-  //   setShowModal(true);
-  // };
-
-  // const handleCloseModal = () => {
-  //   setShowModal(false);
-  //   setCharacterToDelete(null);
-  // };
-
-  // const handleConfirmDelete = async () => {
-  //   try {
-  //     await deleteCharacter(characterToDelete.name);
-  //     setCharacters((prevCharacters) =>
-  //       prevCharacters.filter((char) => char.id !== characterToDelete.id)
-  //     );
-  //     setMessage("Character Deleted");
-  //   } catch (error) {
-  //     console.error("Error deleting chacter", error);
-  //     setMessage("Error deleting character");
-  //   }
-  //   setShowModal(false);
-  //   setCharacterToDelete(null);
-  // };
-  // //----------------ConfirmDelete Modal-------------------
 
   return (
     <>
@@ -69,15 +35,6 @@ const Home = ({ userCharacters }) => {
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>
-      {/* {characterToDelete && (
-        <ConfirmDelete
-          show={showModal}
-          onClose={handleCloseModal}
-          onConfirm={handleConfirmDelete}
-          characterName={characterToDelete.name}
-        />
-      )}
-      {message && <p>{message}</p>} */}
     </>
   );
 };
