@@ -9,6 +9,8 @@ const testCharacters = [
     name: "Bob Bobber",
     age: 30,
     pronouns: "He/Him",
+    description: "Proper big fella, possesses a build not unlike that big boss robot from the film 'Robots' ",
+    book: "Book1"
   },
   {
     id: 2,

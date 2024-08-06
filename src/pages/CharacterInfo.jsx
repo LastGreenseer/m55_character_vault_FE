@@ -22,10 +22,20 @@ const CharacterInfo = () => {
       <MainWrapper>
         <InfoWrapperMain>
           <InfoWrapperName>
-            <h1>{character.name}</h1>
+            <PlaceholderCircle
+              style={{ backgroundImage: `url("${character.image}")` }}
+            />
+            <BoldText>{character.name}</BoldText>
+            <SubText>{character.pronouns}</SubText>
           </InfoWrapperName>
-          <InfoWrapperBiography></InfoWrapperBiography>
-          <InfoWrapperBooks></InfoWrapperBooks>
+          <InfoWrapperBiography>
+            <BoldText>Biography</BoldText>
+            <SubText>{character.description}</SubText>
+          </InfoWrapperBiography>
+          <InfoWrapperBooks>
+            <BoldText>Books</BoldText>
+            <SubText>{character.book}</SubText>
+          </InfoWrapperBooks>
         </InfoWrapperMain>
         <ManagementWrapperMain>
           <UpdateCharacterWrapper></UpdateCharacterWrapper>
@@ -38,7 +48,11 @@ const CharacterInfo = () => {
 
 export default CharacterInfo;
 
-const MainWrapper = styled.div``;
+const MainWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 const InfoWrapperMain = styled.div``;
 
@@ -53,3 +67,23 @@ const ManagementWrapperMain = styled.div``;
 const UpdateCharacterWrapper = styled.div``;
 
 const DeleteCharacterWrapper = styled.div``;
+
+const BoldText = styled.div`
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+`;
+
+const SubText = styled.div`
+  color: grey;
+  font-size: 0.75em;
+`;
+
+const PlaceholderCircle = styled.div`
+  width: 10vh;
+  height: 10vh;
+  background-color: grey;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+`;
