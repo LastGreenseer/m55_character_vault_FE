@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { addCharacter } from "../utils/charFetch";
 import { useState } from "react";
 
-const AddChar = () => {
+const AddChar = ({ loggedUser }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -24,7 +24,8 @@ const AddChar = () => {
         age,
         pronouns,
         description,
-        book
+        book,
+        loggedUser.id
       );
 
       console.log("Successfully added character", response);
@@ -38,7 +39,9 @@ const AddChar = () => {
     <>
       <AddCharacterWrapper>
         <BackButton>
-          <h2><BackLink to="/">Back</BackLink></h2>
+          <h2>
+            <BackLink to="/">Back</BackLink>
+          </h2>
         </BackButton>
         <AddCharacterHeader>
           <h2>Please input your character's information</h2>
@@ -149,7 +152,6 @@ const BackButton = styled(Link)`
 
 const BackLink = styled(Link)`
   text-decoration: none;
-  color: white;  
-  font-weight: bold; 
-  
+  color: white;
+  font-weight: bold;
 `;

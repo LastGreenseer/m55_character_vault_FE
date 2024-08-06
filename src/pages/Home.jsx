@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import GetUserCharacters from "../components/charComponents/GetUserCharacters";
+
 import styled from "styled-components";
 import GetCharacters from "../components/charComponents/GetCharacters";
 
@@ -41,7 +44,7 @@ const generateAvatarUrl = (name) => {
 };
 
 
-const Home = () => {
+const Home = ({userCharacters}) => {
   const [characters, setCharacters] = useState(() => 
     testCharacters.map(char => ({
       ...char,
@@ -54,6 +57,7 @@ const Home = () => {
       <div>
         <h1>Character Vault</h1>
         {/* <GetCharacters/> */}
+        {/*<GetUserCharacters userCharacters={userCharacters} />*/}
       </div>
       <MainWrapper>
         <CharacterSearchWrapper>
@@ -93,6 +97,7 @@ const Home = () => {
         </CharacterWrapperMain>
       </MainWrapper>
     </>
+
   );
 };
 

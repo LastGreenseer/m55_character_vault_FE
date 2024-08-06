@@ -3,9 +3,10 @@ import { getAllCharactersFetch } from "../../utils/charFetch/";
 import styled from "styled-components";
 
 const GetCharacters = () => {
-  const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     const fetchCharacters = async () => {
