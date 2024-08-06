@@ -140,3 +140,32 @@ const PlaceholderCircle = styled.div`
   background-size: cover;
   background-position: center;
 `;
+
+const StyledLink = styled(Link)`
+  height: 40px;
+  width: 90%;
+  background-color: #359235;
+  color: white;
+  border: 1px solid #000000d6;
+  border-radius: 4px;
+  outline: none;
+  padding: 0 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+
+  &:hover {
+    background-color: #2a732a;
+  }
+
+  &:focus {
+    border-color: #909090;
+  }
+`;

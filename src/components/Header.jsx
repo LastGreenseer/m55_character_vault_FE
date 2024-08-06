@@ -16,7 +16,7 @@ const Header = ({ loggedUser, logOrSignSetters }) => {
         </div>
       </HeaderLeft>
       <HeaderRight>
-        {!loggedUser || !loggedUser.user ? (
+        {!loggedUser ? (
           <StyledList>
             <li>
               <Link to="/login">Login</Link>
@@ -29,7 +29,7 @@ const Header = ({ loggedUser, logOrSignSetters }) => {
           <StyledList>
             <li>
               <ClickableUsername to={`/profile`}>
-                {loggedUser.user.username}
+                {loggedUser.username}
               </ClickableUsername>
             </li>
             <li>
