@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UpdateChar from "./UpdateCharacter";
 
 const CharacterInfo = () => {
   const { id } = useParams();
@@ -46,7 +47,10 @@ const CharacterInfo = () => {
           </BookWrapperMain>
         </InfoWrapperMain>
         <ManagementWrapperMain>
-          <UpdateCharacterWrapper></UpdateCharacterWrapper>
+            <h2>Character Management</h2>
+          <UpdateCharacterWrapper>
+            <UpdateChar/>
+          </UpdateCharacterWrapper>
           <DeleteCharacterWrapper></DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
