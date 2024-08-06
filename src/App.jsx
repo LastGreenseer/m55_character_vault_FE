@@ -95,17 +95,9 @@ const App = () => {
             // }
             element={<UpdateChar />}
           />
-          <Route path="/character-info/:id" 
-          element={<CharacterInfo />} />
+          <Route path="/character-info/:id" element={<CharacterInfo />} />
         </Routes>
       </Router>
-      {/* <Header loggedUser={loggedUser} />
-      <h1>Character Vault</h1>
-      <p>{import.meta.env.VITE_TEST}</p>
-      <Login logOrSignSetters={logOrSignSetters} />
-      <UpdateProfile loggedUser={loggedUser} />
-      <AddChar />
-      <Footer /> */}
       <Footer />
     </>
   );
