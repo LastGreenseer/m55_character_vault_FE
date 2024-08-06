@@ -23,11 +23,13 @@ const Profile = ({ loggedUser, logOrSignSetters }) => {
           </p>
         </ProfileInfo>
       </ProfileHeader>
-      <ActionButton onClick={toggleEdit}>
-        {isEditing ? "Cancel Edit" : "Edit Profile"}
-      </ActionButton>
+      <ButtonContainer>
+        <ActionButton onClick={toggleEdit}>
+          {isEditing ? "Cancel Edit" : "Edit Profile"}
+        </ActionButton>
+        <DeleteAccount logOrSignSetters={logOrSignSetters} />
+      </ButtonContainer>
       {isEditing && <UpdateProfile loggedUser={loggedUser} />}
-      <DeleteAccount logOrSignSetters={logOrSignSetters} />
     </ProfileWrapper>
   );
 };
@@ -70,6 +72,14 @@ const ProfileInfo = styled.div`
   strong {
     color: #dd901d;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 `;
 
 const ActionButton = styled.button`
