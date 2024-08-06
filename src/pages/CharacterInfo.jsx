@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const CharacterInfo = () => {
+    const { id } = useParams();
+    const { state } = useLocation();
+    const { character } = state;
+
+    if (!character) {
+      return <div>Character not found</div>;
+    }
+
+
     return (
       <>
-      <h1>Hello</h1>
         <MainWrapper>
           <InfoWrapperMain>
             <InfoWrapperName>
@@ -34,7 +42,7 @@ const CharacterInfo = () => {
 export default CharacterInfo;
 
 const MainWrapper = styled.div`
-
+ 
 `;
 
 const InfoWrapperMain = styled.div`
