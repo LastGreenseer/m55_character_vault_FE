@@ -1,19 +1,26 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { deleteAccount } from "../../utils/usersFetch";
+import { useNavigate } from "react-router-dom";
 
 const DeleteAccount = ({ logOrSignSetters }) => {
-  const [userId, setUserId] = useState("");
-  const [message, setMessage] = useState("");
+  // const [userId, setUserId] = useState("");
+  // const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
-      const data = await deleteAccount(userId);
+      const data = await deleteAccount(logOrSignSetters.loggedUser.id);
+
       if (data.message === "User deleted successfully") {
         logOrSignSetters.setLoggedUser(null);
         logOrSignSetters.setIsLoggedIn(false);
-        setMessage("User deleted successfully");
+
+        setTimeout(() => {
+          navigate("/signup");
+        }, 2000);
       } else {
-        setMessage(" an error occured:" + error.message);
+        setMessage(" an error occured:", error.message);
       }
     } catch (error) {
       setMessage("Error" + error.message);
@@ -23,14 +30,7 @@ const DeleteAccount = ({ logOrSignSetters }) => {
   return (
     <div>
       <h1>Delete Account</h1>
-      <input
-        type="text"
-        placeholder="Enter User ID"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-      />
       <button onClick={handleDelete}>Delete Account</button>
-      {message && <p>{message}</p>}
     </div>
   );
 };

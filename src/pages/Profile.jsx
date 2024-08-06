@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import UpdateProfile from "../components/userComponents/UpdateProfile";
-
-// import DeleteAccount from "../components/DeleteAccount";
+import DeleteAccount from "../components/userComponents/DeleteAccount";
 
 const Profile = ({ loggedUser, logOrSignSetters }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -28,7 +27,7 @@ const Profile = ({ loggedUser, logOrSignSetters }) => {
         {isEditing ? "Cancel Edit" : "Edit Profile"}
       </ActionButton>
       {isEditing && <UpdateProfile loggedUser={loggedUser} />}
-      {/* <DeleteAccount logOrSignSetters={logOrSignSetters} /> */}
+      <DeleteAccount logOrSignSetters={logOrSignSetters} />
     </ProfileWrapper>
   );
 };
