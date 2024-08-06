@@ -30,12 +30,12 @@ const CharacterInfo = () => {
         <InfoWrapperMain>
           <InfoWrapperChar>
             <AvatarWrapper>
-              <PlaceholderCircle
+              <AvatarCircle
                 style={{ backgroundImage: `url("${character.image}")` }}
               />
             </AvatarWrapper>
             <NamePronounsWrapper>
-              <BoldText>{character.name}</BoldText>
+              <BoldTextName>{character.name}</BoldTextName>
               <SubText>{character.pronouns}</SubText>
             </NamePronounsWrapper>
           </InfoWrapperChar>
@@ -53,18 +53,14 @@ const CharacterInfo = () => {
           </BookWrapperMain>
         </InfoWrapperMain>
         <ManagementWrapperMain>
-          <BoldText>Character Management</BoldText>
+          <BoldTextManagement>Character Management</BoldTextManagement>
           <UpdateCharacterWrapper>
             <button onClick={handleToggleUpdateChar}>
-              {showUpdateChar
-                ? "Close"
-                : "Update Character"}
+              {showUpdateChar ? "Close" : "Update Character"}
             </button>
             {showUpdateChar && <UpdateChar />}
           </UpdateCharacterWrapper>
-          <SubText>Delete Character</SubText>
           <DeleteCharacterWrapper>
-            <h2>Do you want to delete this character?</h2>
             <button>Delete Character</button>
           </DeleteCharacterWrapper>
         </ManagementWrapperMain>
@@ -76,10 +72,10 @@ const CharacterInfo = () => {
 export default CharacterInfo;
 
 const MainWrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 100px;
 `;
 
 const InfoWrapperMain = styled.div`
@@ -153,7 +149,7 @@ const UpdateCharacterWrapper = styled.div`
 `;
 
 const DeleteCharacterWrapper = styled.div`
-  border: 2px solid blue;
+  /* border: 2px solid blue;
   width: 540px;
   display: flex;
   flex-direction: row;
@@ -164,22 +160,22 @@ const DeleteCharacterWrapper = styled.div`
 
   h2 {
     font-size: 18px;
-  }
+  } */
 
-  button {
+   button {
     padding: 12px;
-    margin-left: 20px;
-    background: #000000;
+    background: #359235;
     border: 1px solid #000000d6;
     color: white;
     cursor: pointer;
     border-radius: 4px;
+    margin-top: 15px;
     font-weight: bold;
 
     &:hover {
-      background: #ff7474;
+      background: #2a732a;
     }
-  }
+}
 `;
 
 const BoldText = styled.div`
@@ -188,15 +184,28 @@ const BoldText = styled.div`
   font-weight: bold;
 `;
 
-const SubText = styled.div`
-  color: grey;
-  font-size: 0.75em;
+const BoldTextName = styled.div`
+  color: #dd901d;
+  font-size: 1.5em;
+  font-weight: bold;
 `;
 
-const PlaceholderCircle = styled.div`
+const BoldTextManagement = styled.div`
+  color: #dd901d;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 20px 0px
+`;
+
+const SubText = styled.div`
+  color: #ffffff;
+  font-size: 1.05em;
+`;
+
+const AvatarCircle = styled.div`
   width: 10vh;
   height: 10vh;
-  background-color: grey;
+  background-color: #383838;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
