@@ -119,12 +119,20 @@ const InfoWrapperBooks = styled.div`
   width: 90%;
 `;
 
-const ManagementWrapperMain = styled.div``;
+const ManagementWrapperMain = styled.div`
+  
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+`;
 
-const UpdateCharacterWrapper = styled.div``;
+const UpdateCharacterWrapper = styled.div`
+    margin-right: auto;
+`;
 
 const DeleteCharacterWrapper = styled.div`
     border: 2px solid blue;
+    width: 540px;
     display: flex;
     flex-direction: row;
     justify-content: center;
