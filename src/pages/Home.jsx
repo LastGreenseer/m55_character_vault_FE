@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import GetUserCharacters from "../components/charComponents/GetUserCharacters";
+import GetCharacters from "../components/charComponents/GetCharacters";
 
 import styled from "styled-components";
-import GetCharacters from "../components/charComponents/GetCharacters";
 
 const testCharacters = [
   {
@@ -40,17 +40,23 @@ const testCharacters = [
 ];
 
 const generateAvatarUrl = (name) => {
-  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(name)}`;
+  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
+    name
+  )}`;
 };
 
+const Home = ({ userCharacters }) => {
+  console.log(userCharacters);
+  // const [characters, setCharacters] = useState(() =>
+  //   testCharacters.map((char) => ({
+  //     ...char,
+  //     image: generateAvatarUrl(char.name),
+  //   }))
+  // );
 
-const Home = ({userCharacters}) => {
-  const [characters, setCharacters] = useState(() => 
-    testCharacters.map(char => ({
-      ...char,
-      image: generateAvatarUrl(char.name)
-    }))
-  );
+  if (userCharacters === undefined) {
+    return <p>loading...</p>;
+  }
 
   return (
     <>
@@ -74,30 +80,37 @@ const Home = ({userCharacters}) => {
             <h2>Characters</h2>
           </CharacterListTitle>
           <CharacterListWrapper>
-            {characters.map((character) => (
-              <CharacterContainer key={character.id}>
-                <PlaceholderCircle style={{ backgroundImage: `url("${character.image}")` }} />
-                <h2>{character.name}</h2>
-                <AgePronounsContainer>
-                  <AgeContainer>
-                    <BoldText>{character.age}</BoldText>
-                    <SubText>years old</SubText>
-                  </AgeContainer>
-                  <Divider />
-                  <PronounsContainer>
-                    <BoldText>{character.pronouns}</BoldText>
-                    <SubText>pronouns</SubText>
-                  </PronounsContainer>
-                </AgePronounsContainer>
-                <button type="submit">View Character</button>
-                <button tpye="submit">Delete Character</button>
-              </CharacterContainer>
-            ))}
+            <GetUserCharacters>
+              {userCharacters.length < 1 ? (
+                <p>loading...</p>
+              ) : (
+                userCharacters.map((character) => (
+                  <CharacterContainer key={character.id}>
+                    <PlaceholderCircle
+                      style={{ backgroundImage: `url("${character.image}")` }}
+                    />
+                    <h2>{character.name}</h2>
+                    <AgePronounsContainer>
+                      <AgeContainer>
+                        <BoldText>{character.age}</BoldText>
+                        <SubText>years old</SubText>
+                      </AgeContainer>
+                      <Divider />
+                      <PronounsContainer>
+                        <BoldText>{character.pronouns}</BoldText>
+                        <SubText>pronouns</SubText>
+                      </PronounsContainer>
+                    </AgePronounsContainer>
+                    <button type="submit">View Character</button>
+                    <button tpye="submit">Delete Character</button>
+                  </CharacterContainer>
+                ))
+              )}
+            </GetUserCharacters>
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>
     </>
-
   );
 };
 
@@ -105,7 +118,6 @@ export default Home;
 
 const MainWrapper = styled.div`
   display: flex;
-
 `;
 
 const CharacterSearchWrapper = styled.div`
@@ -115,7 +127,6 @@ const CharacterSearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
 `;
 
 const SearchCharacter = styled.div`
@@ -160,9 +171,9 @@ const AddNewCharacter = styled.div`
 const StyledLink = styled(Link)`
   height: 40px;
   width: 90%;
-  background-color: #359235; 
+  background-color: #359235;
   color: white;
-  border: 1px solid #000000d6; 
+  border: 1px solid #000000d6;
   border-radius: 4px;
   outline: none;
   padding: 0 10px;
@@ -186,9 +197,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const CharacterWrapperMain = styled.div`
-
-`;
+const CharacterWrapperMain = styled.div``;
 
 const CharacterListTitle = styled.div`
   display: flex;
@@ -203,7 +212,6 @@ const CharacterListTitle = styled.div`
   margin-bottom: 16px;
   padding: 10px;
 `;
-
 
 const CharacterListWrapper = styled.div`
   display: flex;
@@ -242,8 +250,6 @@ const CharacterContainer = styled.div`
   }
 `;
 
-
-
 const AgePronounsContainer = styled.div`
   background: #0c0d0f;
   border-radius: 5px;
@@ -258,18 +264,18 @@ const AgeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px; 
+  margin-right: 20px;
 `;
 
 const PronounsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px; 
+  margin-left: 20px;
 `;
 
 const Divider = styled.div`
-  height: 50px; 
+  height: 50px;
   width: 1px;
   background-color: #333;
 `;

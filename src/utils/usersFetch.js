@@ -13,7 +13,7 @@ export const login = async (username, password) => {
     );
 
     const data = await response.json();
-    console.log(data);
+    console.log("data in login request: ", data);
     return data;
   } catch (error) {
     console.log(error);

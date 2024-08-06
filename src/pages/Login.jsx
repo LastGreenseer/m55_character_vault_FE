@@ -31,7 +31,7 @@ const Login = ({ logOrSignSetters }) => {
         setErrors({ error: data.error, message: data.message });
         return;
       }
-
+      console.log("data in login: ", data);
       logOrSignSetters.setIsLoggedIn(true);
       logOrSignSetters.setLoggedUser(data.user);
       logOrSignSetters.setUserCharacters(data.characters);
