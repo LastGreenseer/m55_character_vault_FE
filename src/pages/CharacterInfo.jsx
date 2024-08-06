@@ -47,11 +47,16 @@ const CharacterInfo = () => {
           </BookWrapperMain>
         </InfoWrapperMain>
         <ManagementWrapperMain>
-            <h2>Character Management</h2>
-          <UpdateCharacterWrapper>
-            <UpdateChar/>
-          </UpdateCharacterWrapper>
-          <DeleteCharacterWrapper></DeleteCharacterWrapper>
+          <BoldText>Character Management</BoldText>
+          <SubText>Update Character</SubText>
+            <UpdateCharacterWrapper>
+                <UpdateChar />
+            </UpdateCharacterWrapper>
+          <SubText>Delete Character</SubText>
+            <DeleteCharacterWrapper>
+                <h2>Do you want to delete this character?</h2>
+                <button>Delete Character</button>
+            </DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
     </>
@@ -118,7 +123,35 @@ const ManagementWrapperMain = styled.div``;
 
 const UpdateCharacterWrapper = styled.div``;
 
-const DeleteCharacterWrapper = styled.div``;
+const DeleteCharacterWrapper = styled.div`
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #732a2a;
+    border-radius: 5px;
+
+    h2 {
+        font-size: 18px;
+    }
+
+    button {
+    padding: 12px;
+    margin-left: 20px;
+    background: #000000;
+    border: 1px solid #000000d6;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+
+    &:hover {
+      background: #ff7474;
+    }
+}
+
+`;
 
 const BoldText = styled.div`
   color: white;
