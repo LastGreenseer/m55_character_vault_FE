@@ -10,14 +10,14 @@ const ConfirmDelete = ({ show, onClose, onConfirm, characterName }) => {
     <ModalOverlay>
       <ModalContent>
         <ModalHeader>
-          <button onClick={onClose}>X</button>
+          <CloseButton onClick={onClose}>X</CloseButton>
         </ModalHeader>
         <ModalBody>
           <p>Are you sure you want to delete {characterName}?</p>
         </ModalBody>
         <ModalFooter>
-          <button onClick={onClose}>Cancel</button>
-          <button onClick={onConfirm}>Confirm</button>
+          <CancelButton onClick={onClose}>Cancel</CancelButton>
+          <ConfirmButton onClick={onConfirm}>Confirm</ConfirmButton>
         </ModalFooter>
       </ModalContent>
     </ModalOverlay>
@@ -40,32 +40,60 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-background: #494949;
-padding: 20px;
+  background: #494949;
+  padding: 20px;
+  border-radius: 8px;
+  height: 350px;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(117, 117, 117, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column
 `;
 
 const ModalHeader = styled.h2`
   display: flex;
   justify-content: flex-end;
-  button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
 `;
 
 const ModalBody = styled.div`
-margin-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
 `;
 
 const ModalFooter = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  button {
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
+  justify-content: space-between;
+  margin-top: auto
+`;
+
+const CloseButton = styled.button`
+  border: none;
+  background-color: red;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 10px;
+`;
+
+const CancelButton = styled.button`
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 4px;
+`;
+
+const ConfirmButton = styled.button`
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: #960000;
+
+  &:hover {
+    background-color: red;
   }
 `;
