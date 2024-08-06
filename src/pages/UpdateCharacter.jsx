@@ -141,7 +141,7 @@ const UpdateCharacterForm = styled.form`
 
 const UpdateCharacterHeader = styled.div`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 `;
 
 const BackButton = styled(Link)`
