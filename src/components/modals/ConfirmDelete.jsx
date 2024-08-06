@@ -7,45 +7,52 @@ const ConfirmDelete = ({ show, onClose, onConfirm, characterName }) => {
   }
 
   return (
-    <ModalWrapper>
+    <ModalOverlay>
       <ModalContent>
         <ModalHeader>
-          <CloseButton onClick={onClose}>X</CloseButton>
+          <button onClick={onClose}>X</button>
         </ModalHeader>
         <ModalBody>
           <p>Are you sure you want to delete {characterName}?</p>
         </ModalBody>
         <ModalFooter>
-          <CancelButton onClick={onClose}>Cancel</CancelButton>
-          <ConfirmButton onClick={onConfirm}>Confirm</ConfirmButton>
+          <button onClick={onClose}>Cancel</button>
+          <button onClick={onConfirm}>Confirm</button>
         </ModalFooter>
       </ModalContent>
-    </ModalWrapper>
+    </ModalOverlay>
   );
 };
 
 export default ConfirmDelete;
 
-const ModalWrapper = styled.div`
-position: fixed;
-display: flex;
-justify-content: center;
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 `;
 
 const ModalContent = styled.div`
-background: white;
+background: #494949;
 padding: 20px;
 `;
 
 const ModalHeader = styled.h2`
-display: flex;
-justify-content: flex-end;
-button {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer
-}
+  display: flex;
+  justify-content: flex-end;
+  button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
 `;
 
 const ModalBody = styled.div`
@@ -53,12 +60,12 @@ margin-bottom: 20px;
 `;
 
 const ModalFooter = styled.div`
-display: flex;
-justify-content: flex-end;
-gap: 10px;
-button {
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-}
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+  }
 `;
