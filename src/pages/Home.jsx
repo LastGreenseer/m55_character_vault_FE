@@ -5,6 +5,8 @@ import GetUserCharacters from "../components/charComponents/GetUserCharacters";
 
 import styled from "styled-components";
 import GetCharacters from "../components/charComponents/GetCharacters";
+import ConfirmDelete from "../components/modals/ConfirmDelete";
+import { deleteCharacter } from "../utils/charFetch";
 
 const testCharacters = [
   {
@@ -12,8 +14,9 @@ const testCharacters = [
     name: "Bob Bobber",
     age: 30,
     pronouns: "He/Him",
-    description: "Proper big fella, possesses a build not unlike that big boss robot from the film 'Robots' ",
-    book: "Book1"
+    description:
+      "Proper big fella, possesses a build not unlike that big boss robot from the film 'Robots' ",
+    book: "Book1",
   },
   {
     id: 2,
@@ -42,17 +45,49 @@ const testCharacters = [
 ];
 
 const generateAvatarUrl = (name) => {
-  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(name)}`;
+  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
+    name
+  )}`;
 };
 
-
-const Home = ({userCharacters}) => {
-  const [characters, setCharacters] = useState(() => 
-    testCharacters.map(char => ({
+const Home = ({ userCharacters }) => {
+  const [characters, setCharacters] = useState(() =>
+    testCharacters.map((char) => ({
       ...char,
-      image: generateAvatarUrl(char.name)
+      image: generateAvatarUrl(char.name),
     }))
   );
+
+  //----------------ConfirmDelete Modal-------------------
+  const [showModal, setShowModal] = useState(false);
+  const [characterToDelete, setCharacterToDelete] = useState(null);
+  const [message, setMessage] = useState("");
+
+  const handleDeleteClick = (character) => {
+    setCharacterToDelete(character);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setCharacterToDelete(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteCharacter(characterToDelete.name);
+      setCharacters((prevCharacters) =>
+        prevCharacters.filter((char) => char.id !== characterToDelete.id)
+      );
+      setMessage("Character Deleted");
+    } catch (error) {
+      console.error("Error deleting chacter", error);
+      setMessage("Error deleting character");
+    }
+    setShowModal(false);
+    setCharacterToDelete(null);
+  };
+  //----------------ConfirmDelete Modal-------------------
 
   return (
     <>
@@ -94,15 +129,30 @@ const Home = ({userCharacters}) => {
                     <SubText>pronouns</SubText>
                   </PronounsContainer>
                 </AgePronounsContainer>
-                <StyledLink to={`/character-info/${character.id}`} state={{ character }}>View Character</StyledLink>
-                <button tpye="submit">Delete Character</button>
+                <StyledLink
+                  to={`/character-info/${character.id}`}
+                  state={{ character }}
+                >
+                  View Character
+                </StyledLink>
+                <button onClick={() => handleDeleteClick(character)}>
+                  Delete Character
+                </button>
               </CharacterContainer>
             ))}
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>
+      {characterToDelete && (
+        <ConfirmDelete
+          show={showModal}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+          characterName={characterToDelete.name}
+        />
+      )}
+      {message && <p>{message}</p>}
     </>
-
   );
 };
 
@@ -110,7 +160,6 @@ export default Home;
 
 const MainWrapper = styled.div`
   display: flex;
-
 `;
 
 const CharacterSearchWrapper = styled.div`
@@ -120,7 +169,6 @@ const CharacterSearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
 `;
 
 const SearchCharacter = styled.div`
@@ -165,9 +213,9 @@ const AddNewCharacter = styled.div`
 const StyledLink = styled(Link)`
   height: 40px;
   width: 90%;
-  background-color: #359235; 
+  background-color: #359235;
   color: white;
-  border: 1px solid #000000d6; 
+  border: 1px solid #000000d6;
   border-radius: 4px;
   outline: none;
   padding: 0 10px;
@@ -191,9 +239,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const CharacterWrapperMain = styled.div`
-
-`;
+const CharacterWrapperMain = styled.div``;
 
 const CharacterListTitle = styled.div`
   display: flex;
@@ -208,7 +254,6 @@ const CharacterListTitle = styled.div`
   margin-bottom: 16px;
   padding: 10px;
 `;
-
 
 const CharacterListWrapper = styled.div`
   display: flex;
@@ -247,8 +292,6 @@ const CharacterContainer = styled.div`
   }
 `;
 
-
-
 const AgePronounsContainer = styled.div`
   background: #0c0d0f;
   border-radius: 5px;
@@ -263,18 +306,18 @@ const AgeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px; 
+  margin-right: 20px;
 `;
 
 const PronounsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px; 
+  margin-left: 20px;
 `;
 
 const Divider = styled.div`
-  height: 50px; 
+  height: 50px;
   width: 1px;
   background-color: #333;
 `;
