@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import AddChar from "./pages/AddCharacter";
 import UpdateChar from "./pages/UpdateCharacter";
+import CharacterInfo from "./pages/CharacterInfo";
 
 
 const App = () => {
@@ -88,6 +89,12 @@ const App = () => {
             element={
               <UpdateChar/>
             }
+          />
+          <Route
+          path="/character-info"
+          element={
+            <CharacterInfo/>
+          }
           />
         </Routes>
       </Router>

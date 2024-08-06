@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CharacterInfo = () => {
     return (
       <>
+      <h1>Hello</h1>
         <MainWrapper>
           <InfoWrapperMain>
             <InfoWrapperName>

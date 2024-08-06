@@ -52,6 +52,7 @@ const Home = () => {
   return (
     <>
       <div>
+        <Link to="/character-info">More Info</Link>
         <h1>Character Vault</h1>
         {/* <GetCharacters/> */}
       </div>
