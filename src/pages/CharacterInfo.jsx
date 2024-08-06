@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UpdateChar from "./UpdateCharacter";
@@ -10,12 +10,18 @@ const CharacterInfo = () => {
   const { state } = location;
   const character = state?.character;
 
+  const [showUpdateChar, setShowUpdateChar] = useState(false);
+
   React.useEffect(() => {
     console.log("Character data:", character);
   }, [character, navigate]);
 
+  const handleToggleUpdateChar = () => {
+    setShowUpdateChar((prev) => !prev);
+  };
+
   if (!character) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
@@ -48,15 +54,19 @@ const CharacterInfo = () => {
         </InfoWrapperMain>
         <ManagementWrapperMain>
           <BoldText>Character Management</BoldText>
-          <SubText>Update Character</SubText>
-            <UpdateCharacterWrapper>
-                <UpdateChar />
-            </UpdateCharacterWrapper>
+          <UpdateCharacterWrapper>
+            <button onClick={handleToggleUpdateChar}>
+              {showUpdateChar
+                ? "Close"
+                : "Update Character"}
+            </button>
+            {showUpdateChar && <UpdateChar />}
+          </UpdateCharacterWrapper>
           <SubText>Delete Character</SubText>
-            <DeleteCharacterWrapper>
-                <h2>Do you want to delete this character?</h2>
-                <button>Delete Character</button>
-            </DeleteCharacterWrapper>
+          <DeleteCharacterWrapper>
+            <h2>Do you want to delete this character?</h2>
+            <button>Delete Character</button>
+          </DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
     </>
@@ -66,11 +76,10 @@ const CharacterInfo = () => {
 export default CharacterInfo;
 
 const MainWrapper = styled.div`
-    border: 2px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const InfoWrapperMain = styled.div`
@@ -97,8 +106,8 @@ const NamePronounsWrapper = styled.div`
 `;
 
 const BiographyWrapperMain = styled.div`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 
 const InfoWrapperBiography = styled.div`
@@ -106,7 +115,6 @@ const InfoWrapperBiography = styled.div`
   background: #2d2e31;
   width: 90%;
   border-radius: 5px;
-  
 `;
 
 const BookWrapperMain = styled.div`
@@ -120,31 +128,45 @@ const InfoWrapperBooks = styled.div`
 `;
 
 const ManagementWrapperMain = styled.div`
-  
   width: 80%;
   display: flex;
   flex-direction: column;
 `;
 
 const UpdateCharacterWrapper = styled.div`
-    margin-right: auto;
+  margin-right: auto;
+
+  button {
+    padding: 12px;
+    background: #359235;
+    border: 1px solid #000000d6;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+
+    &:hover {
+      background: #2a732a;
+    }
+  }
 `;
 
 const DeleteCharacterWrapper = styled.div`
-    border: 2px solid blue;
-    width: 540px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: #732a2a;
-    border-radius: 5px;
+  border: 2px solid blue;
+  width: 540px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #732a2a;
+  border-radius: 5px;
 
-    h2 {
-        font-size: 18px;
-    }
+  h2 {
+    font-size: 18px;
+  }
 
-    button {
+  button {
     padding: 12px;
     margin-left: 20px;
     background: #000000;
@@ -157,8 +179,7 @@ const DeleteCharacterWrapper = styled.div`
     &:hover {
       background: #ff7474;
     }
-}
-
+  }
 `;
 
 const BoldText = styled.div`
