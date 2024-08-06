@@ -86,16 +86,10 @@ const App = () => {
             // element={
             //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
             // }
-            element={
-              <UpdateChar/>
-            }
+            element={<UpdateChar />}
           />
-          <Route
-          path="/character-info"
-          element={
-            <CharacterInfo/>
-          }
-          />
+          <Route path="/character-info/:id" 
+          element={<CharacterInfo />} />
         </Routes>
       </Router>
       {/* <Header loggedUser={loggedUser} />

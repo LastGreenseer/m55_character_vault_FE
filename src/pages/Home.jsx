@@ -29,7 +29,7 @@ const testCharacters = [
     pronouns: "They/Them",
   },
   {
-    id: 4,
+    id: 5,
     name: "James Bondest",
     age: 40,
     pronouns: "They/Them",
@@ -73,7 +73,9 @@ const Home = () => {
           <CharacterListWrapper>
             {characters.map((character) => (
               <CharacterContainer key={character.id}>
-                <PlaceholderCircle style={{ backgroundImage: `url("${character.image}")` }} />
+                <PlaceholderCircle
+                  style={{ backgroundImage: `url("${character.image}")` }}
+                />
                 <h2>{character.name}</h2>
                 <AgePronounsContainer>
                   <AgeContainer>
@@ -86,7 +88,7 @@ const Home = () => {
                     <SubText>pronouns</SubText>
                   </PronounsContainer>
                 </AgePronounsContainer>
-                <button type="submit">View Character</button>
+                <StyledLink to={`/character-info/${character.id}`} state={{ character }}>View Character</StyledLink>
                 <button tpye="submit">Delete Character</button>
               </CharacterContainer>
             ))}
