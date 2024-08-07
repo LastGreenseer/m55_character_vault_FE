@@ -26,11 +26,11 @@ const Home = ({ userCharacters }) => {
             <h2>Characters</h2>
           </CharacterListTitle>
           <CharacterListWrapper>
-            {userCharacters === undefined ? (
-              'No Characters Found'
-            ) : (
-              <GetUserCharacters userCharacters={userCharacters} />
-            )}
+          {userCharacters && userCharacters.length > 0 ? (
+            <GetUserCharacters userCharacters={userCharacters} />
+          ) : (
+            'No Characters Found'
+          )}
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>
