@@ -59,6 +59,7 @@ const ModalHeader = styled.h2`
 const ModalBody = styled.div`
   margin-bottom: 20px;
   text-align: center;
+  font-weight: bold;
   color: white;
 `;
 
@@ -70,7 +71,7 @@ const ModalFooter = styled.div`
 
 const CloseButton = styled.button`
   border: none;
-  background-color: red;
+  background-color: #dd231d;
   font-size: 1.2rem;
   cursor: pointer;
   color: white;
@@ -82,8 +83,13 @@ const CancelButton = styled.button`
   padding: 8px 16px;
   border: none;
   cursor: pointer;
-  background-color: #ccc;
+  font-weight: bold;
+  background-color: #dd901d;
   border-radius: 4px;
+
+  &:hover {
+    background-color: #a06917;
+  }
 `;
 
 const ConfirmButton = styled.button`
@@ -91,9 +97,10 @@ const ConfirmButton = styled.button`
   border: none;
   cursor: pointer;
   color: white;
-  background-color: #960000;
+  font-weight: bold;
+  background-color: #359235;
 
   &:hover {
-    background-color: red;
+    background-color: #2a732a;
   }
 `;
