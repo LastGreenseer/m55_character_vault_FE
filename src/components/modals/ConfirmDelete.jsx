@@ -10,10 +10,12 @@ const ConfirmDelete = ({ show, onClose, onConfirm, characterName }) => {
     <ModalOverlay>
       <ModalContent>
         <ModalHeader>
-          <CloseButton onClick={onClose}>X</CloseButton>
+          <CloseButton onClick={onClose}>×</CloseButton>
         </ModalHeader>
         <ModalBody>
-          <p>Are you sure you want to delete {characterName}?</p>
+          <p>
+            Are you sure you want to delete <strong>{characterName}</strong>?
+          </p>
         </ModalBody>
         <ModalFooter>
           <CancelButton onClick={onClose}>Cancel</CancelButton>
@@ -32,7 +34,7 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7); /* Slightly darker for better contrast */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,18 +42,17 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #494949;
+  background: #1a1b20; /* Darker background to match the app's dark theme */
   padding: 20px;
   border-radius: 8px;
-  height: 350px;
   width: 400px;
-  box-shadow: 0 2px 10px rgba(117, 117, 117, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
   position: relative;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 `;
 
-const ModalHeader = styled.h2`
+const ModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
@@ -59,48 +60,55 @@ const ModalHeader = styled.h2`
 const ModalBody = styled.div`
   margin-bottom: 20px;
   text-align: center;
+  color: #e0e0e0;
+  font-family: "Nunito", sans-serif;
   font-weight: bold;
-  color: white;
+
 `;
 
 const ModalFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: auto
+  margin-top: auto;
 `;
 
 const CloseButton = styled.button`
   border: none;
-  background-color: #dd231d;
-  font-size: 1.2rem;
+  background: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: white;
+  color: #e0e0e0;
   position: absolute;
   top: 10px;
+  right: 10px;
 `;
 
 const CancelButton = styled.button`
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  background-color: #dd901d;
+  background-color: #555;
+  color: #fff;
   border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #a06917;
+    background-color: #777;
   }
 `;
 
 const ConfirmButton = styled.button`
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  color: white;
-  font-weight: bold;
-  background-color: #359235;
+  color: #fff;
+  background-color: #e74c3c;
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: #2a732a;
+    background-color: #c0392b;
   }
 `;
