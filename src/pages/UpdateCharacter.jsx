@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { updateCharacter } from "../utils/charFetch";
 import { useState } from "react";
 
-const UpdateChar = () => {
+const  UpdateChar = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -11,7 +11,9 @@ const UpdateChar = () => {
   const [book, setBook] = useState("");
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const { character } = location.state;
+  console.log("character in update char", location.state);
   const handleChange = (e, setState) => {
     setState(e.target.value);
   };
@@ -26,6 +28,7 @@ const UpdateChar = () => {
 
     try {
       const response = await updateCharacter(
+        character.id,
         name,
         age,
         pronouns,
