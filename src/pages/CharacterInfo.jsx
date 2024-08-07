@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UpdateChar from "./UpdateCharacter";
-import ConfirmDelete from "../modals/ConfirmDelete";
-import { deleteCharacter } from "../../utils/charFetch";
+import ConfirmDelete from "../components/modals/ConfirmDelete";
+import { deleteCharacter } from "../utils/charFetch";
 
 const CharacterInfo = () => {
   const { id } = useParams();
@@ -87,10 +87,19 @@ const handleConfirmDelete = async () => {
             {showUpdateChar && <UpdateChar />}
           </UpdateCharacterWrapper>
           <DeleteCharacterWrapper>
-            <button>Delete Character</button>
+            <button onClick ={handleDeleteClick}>Delete Character</button>
           </DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
+      {showModal && (
+        <ConfirmDelete
+        show={showModal}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmDelete}
+        characterName={character.name}
+        />
+      )}
+      {message && <p>{message}</p>}
     </>
   );
 };
