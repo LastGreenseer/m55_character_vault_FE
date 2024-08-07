@@ -35,6 +35,7 @@ export const addCharacter = async (
 };
 
 export const updateCharacter = async (
+  id,
   name,
   age,
   pronouns,
@@ -42,8 +43,16 @@ export const updateCharacter = async (
   book
 ) => {
   try {
+    const reqBody = {
+      name,
+      age,
+      pronouns,
+      description,
+      book,
+    };
+    console.log("reqBody", reqBody)
     const response = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${name}`,
+      `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${id}`,
       {
         method: "PUT",
         mode: "cors",
@@ -51,11 +60,7 @@ export const updateCharacter = async (
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          age,
-          pronouns,
-          description,
-          book,
+          updateFields: reqBody,
         }),
       }
     );
