@@ -13,7 +13,6 @@ const Home = ({ userCharacters }) => {
   return (
     <>
       <div>
-        <Link to="/character-info">More Info</Link>
         <h1>Character Vault</h1>
       </div>
       <MainWrapper>
