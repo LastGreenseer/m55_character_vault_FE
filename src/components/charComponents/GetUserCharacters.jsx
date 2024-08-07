@@ -1,11 +1,7 @@
 import styled from "styled-components";
-
 import { useState } from "react";
-
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import ConfirmDelete from "../modals/ConfirmDelete";
-
 import { deleteCharacter } from "../../utils/charFetch";
 
 const generateAvatarUrl = (name) => {
@@ -18,7 +14,7 @@ const GetUserCharacters = ({ userCharacters }) => {
   //----------------ConfirmDelete Modal-------------------
   const [showModal, setShowModal] = useState(false);
   const [characterToDelete, setCharacterToDelete] = useState(null);
-  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleDeleteClick = (character) => {
     setCharacterToDelete(character);
@@ -36,7 +32,7 @@ const GetUserCharacters = ({ userCharacters }) => {
       setCharacters((prevCharacters) =>
         prevCharacters.filter((char) => char.id !== characterToDelete.id)
       );
-      setMessage("Character Deleted");
+      navigate("/");
     } catch (error) {
       console.error("Error deleting chacter", error);
       setMessage("Error deleting character");
@@ -101,7 +97,6 @@ const GetUserCharacters = ({ userCharacters }) => {
           characterName={characterToDelete.name}
         />
       )}
-      {message && <p>{message}</p>}
     </>
   );
 };
