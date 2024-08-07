@@ -62,6 +62,8 @@ const ModalBody = styled.div`
   text-align: center;
   color: #e0e0e0;
   font-family: "Nunito", sans-serif;
+  font-weight: bold;
+
 `;
 
 const ModalFooter = styled.div`

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UpdateChar from "./UpdateCharacter";
+import ConfirmDelete from "../components/modals/ConfirmDelete";
+import { deleteCharacter } from "../utils/charFetch";
 
 const CharacterInfo = () => {
   const { id } = useParams();
@@ -11,6 +13,8 @@ const CharacterInfo = () => {
   const character = state?.character;
 
   const [showUpdateChar, setShowUpdateChar] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
 
   React.useEffect(() => {
     console.log("Character data:", character);
@@ -19,6 +23,28 @@ const CharacterInfo = () => {
   const handleToggleUpdateChar = () => {
     setShowUpdateChar((prev) => !prev);
   };
+
+  //---For handling delete function and modal--
+const handleDeleteClick = () => {
+  setShowModal(true)
+}
+
+const handleCloseModal = () => {
+  setShowModal(false)
+}
+
+const handleConfirmDelete = async () => {
+  try {
+    await deleteCharacter(character.name)
+    setMessage("Character Deleted")
+    navigate("/")
+  } catch (error) {
+    console.error("Error deleteing character", error)
+    setMessage("Error deleting character")
+  }
+  setShowModal(false)
+}
+  //---For handling delete function and modal--
 
   if (!character) {
     return <div>Loading...</div>;
@@ -61,10 +87,19 @@ const CharacterInfo = () => {
             {showUpdateChar && <UpdateChar />}
           </UpdateCharacterWrapper>
           <DeleteCharacterWrapper>
-            <button>Delete Character</button>
+            <button onClick ={handleDeleteClick}>Delete Character</button>
           </DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
+      {showModal && (
+        <ConfirmDelete
+        show={showModal}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmDelete}
+        characterName={character.name}
+        />
+      )}
+      {message && <p>{message}</p>}
     </>
   );
 };

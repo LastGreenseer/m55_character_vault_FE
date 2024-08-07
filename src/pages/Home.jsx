@@ -6,10 +6,6 @@ import GetUserCharacters from "../components/charComponents/GetUserCharacters";
 import styled from "styled-components";
 
 const Home = ({ userCharacters }) => {
-  if (userCharacters === undefined) {
-    return <p>loading...</p>;
-  }
-
   return (
     <>
       <div>
@@ -30,7 +26,11 @@ const Home = ({ userCharacters }) => {
             <h2>Characters</h2>
           </CharacterListTitle>
           <CharacterListWrapper>
+          {userCharacters && userCharacters.length > 0 ? (
             <GetUserCharacters userCharacters={userCharacters} />
+          ) : (
+            'No Characters Found'
+          )}
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>
