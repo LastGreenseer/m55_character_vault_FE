@@ -84,6 +84,7 @@ const UpdateWrapper = styled.div`
   border-radius: 5px;
   padding: 15px;
   border: 1px solid #cecece0f;
+  text-align: center;
   background: #1a1b20;
   margin: auto;
   margin-top: 125px;
