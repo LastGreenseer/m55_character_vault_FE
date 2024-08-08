@@ -16,15 +16,12 @@ const CharacterInfo = ({ setUserCharacters }) => {
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState("");
 
-  React.useEffect(() => {
-    console.log("Character data:", character);
-  }, [character, navigate]);
+  React.useEffect(() => {}, [character, navigate]);
 
   const handleToggleUpdateChar = () => {
     setShowUpdateChar((prev) => !prev);
   };
 
-  //---For handling delete function and modal--
   const handleDeleteClick = () => {
     setShowModal(true);
   };
@@ -44,7 +41,6 @@ const CharacterInfo = ({ setUserCharacters }) => {
     }
     setShowModal(false);
   };
-  //---For handling delete function and modal--
 
   if (!character) {
     return <div>Loading...</div>;
@@ -121,7 +117,6 @@ const InfoWrapperMain = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
-  /* margin-left: 10px; */
 `;
 
 const InfoWrapperChar = styled.div`
@@ -186,19 +181,6 @@ const UpdateCharacterWrapper = styled.div`
 `;
 
 const DeleteCharacterWrapper = styled.div`
-  /* border: 2px solid blue;
-  width: 540px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: #732a2a;
-  border-radius: 5px;
-
-  h2 {
-    font-size: 18px;
-  } */
-
   button {
     padding: 12px;
     background: #359235;

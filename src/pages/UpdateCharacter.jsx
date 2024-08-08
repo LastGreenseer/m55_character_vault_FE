@@ -13,7 +13,6 @@ const UpdateChar = ({ setUserCharacters }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { character } = location.state;
-  console.log("character in update char", location.state);
 
   const handleChange = (e, setState) => {
     setState(e.target.value);
@@ -32,11 +31,7 @@ const UpdateChar = ({ setUserCharacters }) => {
         book
       );
 
-      console.log("Successfully updated character", response);
-      console.log(setUserCharacters);
-
       setUserCharacters([...response.allCharacters]);
-
       navigate("/");
     } catch (error) {
       console.error("Failed to update character.", error);
@@ -145,7 +140,6 @@ const UpdateCharacterForm = styled.form`
 
 const UpdateCharacterHeader = styled.div`
   display: flex;
-  /* justify-content: center; */
 `;
 
 const BackButton = styled(Link)`

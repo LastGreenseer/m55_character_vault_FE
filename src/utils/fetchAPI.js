@@ -12,7 +12,6 @@ export const getAvatar = async (style, seed) => {
     }
 
     const data = await response.text();
-    console.log(data)
     return data;
   } catch (error) {
     console.error("Error fetching avatar", error);

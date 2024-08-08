@@ -28,7 +28,6 @@ const GetCharacters = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("click for character");
   };
 
   return (

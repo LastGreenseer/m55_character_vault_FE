@@ -33,7 +33,6 @@ const Login = ({ logOrSignSetters, charSetters }) => {
         setErrors({ error: data.error, message: data.message });
         return;
       }
-      console.log("data in login: ", data);
       logOrSignSetters.setIsLoggedIn(true);
       logOrSignSetters.setLoggedUser(data.user);
       charSetters.setUserCharacters(data.characters);
@@ -149,7 +148,6 @@ const LoginForm = styled.form`
       border-color: #909090;
     }
 
-    /* Override autofill styles */
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,

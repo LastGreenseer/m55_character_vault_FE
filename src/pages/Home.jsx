@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import GetUserCharacters from "../components/charComponents/GetUserCharacters";
@@ -46,6 +45,7 @@ export default Home;
 
 const MainWrapper = styled.div`
   display: flex;
+  font-family: "Nunito", sans-serif;
 `;
 
 const CharacterSearchWrapper = styled.div`
@@ -78,7 +78,6 @@ const SearchCharacter = styled.div`
     background: #359235;
     border: 1px solid #000000d6;
     cursor: pointer;
-    font-weight: bold;
     margin-top: 5px;
     display: inline-flex;
     align-items: center;
@@ -113,7 +112,6 @@ const StyledLink = styled(Link)`
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  font-weight: bold;
   margin-top: 5px;
 
   &:hover {

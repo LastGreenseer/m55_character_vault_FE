@@ -61,7 +61,6 @@ const SignupForm = styled.form`
       border-color: #909090;
     }
 
-    /* Override autofill styles */
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
@@ -138,7 +137,6 @@ const Signup = () => {
           "Account successfully created, automatically redirecting to login.",
       });
 
-      // Give slight delay to show success message.
       setTimeout(() => {
         navigate("/login");
       }, 2000);

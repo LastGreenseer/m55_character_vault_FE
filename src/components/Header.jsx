@@ -6,8 +6,6 @@ import Logout from "./userComponents/Logout";
 const Header = ({ loggedUser, logOrSignSetters }) => {
   const navigate = useNavigate();
 
-  console.log("Header Component - loggedUser", loggedUser);
-
   return (
     <StyledHeader>
       <HeaderLeft>

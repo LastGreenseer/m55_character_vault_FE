@@ -40,7 +40,6 @@ const AddChar = ({ loggedUser, charSetters }) => {
       };
       charSetters.setUserCharacters((prev) => [...prev, newCharacter]);
 
-      console.log("Successfully added character", response);
       navigate("/");
     } catch (error) {
       console.error("Failed to add character.", error);

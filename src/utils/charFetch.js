@@ -1,4 +1,4 @@
-import { getTokenFromCookie } from '../common';
+import { getTokenFromCookie } from "../common";
 
 export const addCharacter = async (
   name,
@@ -29,7 +29,6 @@ export const addCharacter = async (
     );
 
     const data = await response.json();
-    console.log("data ", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -52,7 +51,6 @@ export const updateCharacter = async (
       description,
       book,
     };
-    console.log("reqBody", reqBody)
     const response = await fetch(
       `${import.meta.env.VITE_BASE_URL}/char/updateCharacter/${id}`,
       {
@@ -72,7 +70,6 @@ export const updateCharacter = async (
     }
 
     const data = await response.json();
-    console.log("data ", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -93,7 +90,6 @@ export const deleteCharacter = async (name) => {
     );
 
     const data = await response.json();
-    console.log("data", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -113,7 +109,6 @@ export const getCharacterFetch = async (name) => {
     }
   );
   const data = await response.json();
-  console.log(data);
   return data;
 };
 
@@ -130,7 +125,6 @@ export const getAllCharactersFetch = async () => {
       }
     );
     const data = await response.json();
-    console.log("data ", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -139,19 +133,21 @@ export const getAllCharactersFetch = async () => {
 
 export const fetchCharactersWithUserId = async (userId) => {
   try {
-    const token = getTokenFromCookie('jwt_token');
-    
+    const token = getTokenFromCookie("jwt_token");
+
     if (!token) {
-      console.log("No token")
     }
 
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/char/getUserCharacters/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
+    const response = await fetch(
+      `${import.meta.env.VITE_BASE_URL}/char/getUserCharacters/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
 
     if (!response.ok) {
       const error = await response.json();
@@ -161,6 +157,6 @@ export const fetchCharactersWithUserId = async (userId) => {
     const data = await response.json();
     return data.characters;
   } catch (error) {
-    console.log('Error fetching characters:', error);
+    console.log("Error fetching characters:", error);
   }
 };

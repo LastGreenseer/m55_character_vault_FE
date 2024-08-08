@@ -34,7 +34,6 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("hello useEffect in app");
     const temp = userCharacters.map((char) => {
       return { ...char, image: generateAvatarUrl(char.name) };
     });
@@ -165,9 +164,6 @@ const App = () => {
           />
           <Route
             path="/update-character"
-            // element={
-            //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
-            // }
             element={<UpdateChar setUserCharacters={setUserCharacters} />}
           />
           <Route
