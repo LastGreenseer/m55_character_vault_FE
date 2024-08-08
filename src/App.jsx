@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import {
@@ -17,9 +17,12 @@ import AddChar from "./pages/AddCharacter";
 import UpdateChar from "./pages/UpdateCharacter";
 import CharacterInfo from "./pages/CharacterInfo";
 
+import { getTokenFromCookie } from "./common";
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [userCharacters, setUserCharacters] = useState([]);
 
@@ -31,6 +34,55 @@ const App = () => {
     loggedUser,
     setLoggedUser,
   };
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = getTokenFromCookie('jwt_token');
+      console.log('Token from cookie:', token);
+  
+      if (token) {
+        try {
+          // Verify the token by sending it to the server, ths will return the user data to be used in state
+          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/verify-token`, {
+            method: "GET",
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          
+  
+          console.log('Response status:', response.status);
+  
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.log('Error response:', errorText);
+            throw new Error(`Token verification failed: ${response.status} ${errorText}`);
+          }
+  
+          const data = await response.json();
+          console.log('Response data:', data);
+  
+          if (data.user) {
+            logOrSignSetters.setIsLoggedIn(true);
+            logOrSignSetters.setLoggedUser(data.user);
+          } else {
+            throw new Error('User data not found in response');
+          }
+        } catch (error) {
+          console.error('Token verification failed:', error);
+          document.cookie = 'jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          logOrSignSetters.setLoggedUser(null);
+        }
+      } else {
+        console.log('No token found in cookie');
+        logOrSignSetters.setLoggedUser(null);
+      }
+      setLoading(false);
+    };
+  
+    verifyToken();
+  }, []);
 
   return (
     <>

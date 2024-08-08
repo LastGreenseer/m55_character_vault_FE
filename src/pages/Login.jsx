@@ -4,6 +4,8 @@ import { useState } from "react";
 import Error from "../components/userComponents/Error";
 import styled from "styled-components";
 
+import { writeCookie } from "../common";
+
 const Login = ({ logOrSignSetters }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +37,7 @@ const Login = ({ logOrSignSetters }) => {
       logOrSignSetters.setIsLoggedIn(true);
       logOrSignSetters.setLoggedUser(data.user);
       logOrSignSetters.setUserCharacters(data.characters);
+      writeCookie("jwt_token", data.token, 7);
 
       setUsername("");
       setPassword("");
