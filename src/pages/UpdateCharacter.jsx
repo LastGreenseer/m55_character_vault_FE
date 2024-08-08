@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { updateCharacter } from "../utils/charFetch";
 import { useState } from "react";
 
-const  UpdateChar = () => {
+const UpdateChar = ({ setUserCharacters }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -14,17 +14,13 @@ const  UpdateChar = () => {
   const location = useLocation();
   const { character } = location.state;
   console.log("character in update char", location.state);
+
   const handleChange = (e, setState) => {
     setState(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // if (!name || !age || !pronouns || !description || !book) {
-    //   setError("All fields are required.");
-    //   return;
-    // }
 
     try {
       const response = await updateCharacter(
@@ -37,6 +33,11 @@ const  UpdateChar = () => {
       );
 
       console.log("Successfully updated character", response);
+      console.log(setUserCharacters);
+
+      setUserCharacters([...response.allCharacters]);
+
+      navigate("/");
     } catch (error) {
       console.error("Failed to update character.", error);
     }

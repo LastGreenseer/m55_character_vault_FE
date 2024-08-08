@@ -5,7 +5,7 @@ import UpdateChar from "./UpdateCharacter";
 import ConfirmDelete from "../components/modals/ConfirmDelete";
 import { deleteCharacter } from "../utils/charFetch";
 
-const CharacterInfo = () => {
+const CharacterInfo = ({ setUserCharacters }) => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,25 +25,25 @@ const CharacterInfo = () => {
   };
 
   //---For handling delete function and modal--
-const handleDeleteClick = () => {
-  setShowModal(true)
-}
+  const handleDeleteClick = () => {
+    setShowModal(true);
+  };
 
-const handleCloseModal = () => {
-  setShowModal(false)
-}
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
-const handleConfirmDelete = async () => {
-  try {
-    await deleteCharacter(character.name)
-    setMessage("Character Deleted")
-    navigate("/")
-  } catch (error) {
-    console.error("Error deleteing character", error)
-    setMessage("Error deleting character")
-  }
-  setShowModal(false)
-}
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteCharacter(character.name);
+      setMessage("Character Deleted");
+      navigate("/");
+    } catch (error) {
+      console.error("Error deleteing character", error);
+      setMessage("Error deleting character");
+    }
+    setShowModal(false);
+  };
   //---For handling delete function and modal--
 
   if (!character) {
@@ -84,19 +84,21 @@ const handleConfirmDelete = async () => {
             <button onClick={handleToggleUpdateChar}>
               {showUpdateChar ? "Close" : "Update Character"}
             </button>
-            {showUpdateChar && <UpdateChar />}
+            {showUpdateChar && (
+              <UpdateChar setUserCharacters={setUserCharacters} />
+            )}
           </UpdateCharacterWrapper>
           <DeleteCharacterWrapper>
-            <button onClick ={handleDeleteClick}>Delete Character</button>
+            <button onClick={handleDeleteClick}>Delete Character</button>
           </DeleteCharacterWrapper>
         </ManagementWrapperMain>
       </MainWrapper>
       {showModal && (
         <ConfirmDelete
-        show={showModal}
-        onClose={handleCloseModal}
-        onConfirm={handleConfirmDelete}
-        characterName={character.name}
+          show={showModal}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+          characterName={character.name}
         />
       )}
       {message && <p>{message}</p>}
@@ -197,7 +199,7 @@ const DeleteCharacterWrapper = styled.div`
     font-size: 18px;
   } */
 
-   button {
+  button {
     padding: 12px;
     background: #359235;
     border: 1px solid #000000d6;
@@ -210,7 +212,7 @@ const DeleteCharacterWrapper = styled.div`
     &:hover {
       background: #2a732a;
     }
-}
+  }
 `;
 
 const BoldText = styled.div`
@@ -229,7 +231,7 @@ const BoldTextManagement = styled.div`
   color: #dd901d;
   font-size: 1.5em;
   font-weight: bold;
-  padding: 20px 0px
+  padding: 20px 0px;
 `;
 
 const SubText = styled.div`

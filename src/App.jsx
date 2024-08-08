@@ -168,9 +168,12 @@ const App = () => {
             // element={
             //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
             // }
-            element={<UpdateChar charSetters={charSetters} />}
+            element={<UpdateChar setUserCharacters={setUserCharacters} />}
           />
-          <Route path="/character-info/:id" element={<CharacterInfo />} />
+          <Route
+            path="/character-info/:id"
+            element={<CharacterInfo setUserCharacters={setUserCharacters} />}
+          />
         </Routes>
       </Router>
       <Footer />
