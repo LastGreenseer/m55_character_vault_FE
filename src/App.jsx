@@ -20,53 +20,76 @@ import CharacterInfo from "./pages/CharacterInfo";
 import { getTokenFromCookie } from "./common";
 import { fetchCharactersWithUserId } from "./utils/charFetch";
 
+const generateAvatarUrl = (name) => {
+  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
+    name
+  )}`;
+};
+
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUser, setLoggedUser] = useState(null);
+  const [userCharacters, setUserCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [userCharacters, setUserCharacters] = useState([]);
+  useEffect(() => {
+    console.log("hello useEffect in app");
+    const temp = userCharacters.map((char) => {
+      return { ...char, image: generateAvatarUrl(char.name) };
+    });
+    setCharacters([...temp]);
+  }, [userCharacters]);
 
   const logOrSignSetters = {
-    userCharacters,
-    setUserCharacters,
     isLoggedIn,
     setIsLoggedIn,
     loggedUser,
     setLoggedUser,
   };
 
+  const charSetters = {
+    userCharacters,
+    setUserCharacters,
+    characters,
+    setCharacters,
+  };
+
   useEffect(() => {
     const verifyToken = async () => {
-      const token = getTokenFromCookie('jwt_token');
+      const token = getTokenFromCookie("jwt_token");
       if (token) {
         try {
-          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/verify-token`, {
-            method: "GET",
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
+          const response = await fetch(
+            `${import.meta.env.VITE_BASE_URL}/users/verify-token`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
             }
-          });
-          
+          );
+
           if (!response.ok) {
             throw new Error(`Token verification failed: ${response.status}`);
           }
-  
+
           const data = await response.json();
-  
+
           if (data.user) {
             setIsLoggedIn(true);
             setLoggedUser(data.user);
-            
+
             const characters = await fetchCharactersWithUserId(data.user.id);
             setUserCharacters(characters);
           } else {
             console.log("User not found with that id");
           }
         } catch (error) {
-          console.error('Token verification or character fetch failed:', error);
-          document.cookie = 'jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          console.error("Token verification or character fetch failed:", error);
+          document.cookie =
+            "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
           setLoggedUser(null);
           setUserCharacters([]);
         }
@@ -76,7 +99,7 @@ const App = () => {
       }
       setLoading(false);
     };
-  
+
     verifyToken();
   }, []);
 
@@ -91,7 +114,10 @@ const App = () => {
               isLoggedIn ? (
                 <Navigate to="/" replace />
               ) : (
-                <Login logOrSignSetters={logOrSignSetters} />
+                <Login
+                  logOrSignSetters={logOrSignSetters}
+                  charSetters={charSetters}
+                />
               )
             }
           />
@@ -99,15 +125,16 @@ const App = () => {
             path="/signup"
             element={isLoggedIn ? <Navigate to="/" replace /> : <Signup />}
           />
-          {/*  
-            If page requires users to be logged in, run conditional check in element, first part is if user is logged in
-            second part is if they aren't logged in, in the case below navigate to the login page 
-          */}
           <Route
             path="/"
             element={
               isLoggedIn ? (
-                <Home user={loggedUser} userCharacters={userCharacters} />
+                <Home
+                  user={loggedUser}
+                  userCharacters={userCharacters}
+                  charSetters={charSetters}
+                  characters={characters}
+                />
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -130,7 +157,7 @@ const App = () => {
             path="/add-character"
             element={
               isLoggedIn ? (
-                <AddChar loggedUser={loggedUser} />
+                <AddChar loggedUser={loggedUser} charSetters={charSetters} />
               ) : (
                 <Navigate to="/login" replace />
               )
@@ -141,7 +168,7 @@ const App = () => {
             // element={
             //   isLoggedIn ? <UpdateChar /> : <Navigate to="/login" replace />
             // }
-            element={<UpdateChar />}
+            element={<UpdateChar charSetters={charSetters} />}
           />
           <Route path="/character-info/:id" element={<CharacterInfo />} />
         </Routes>

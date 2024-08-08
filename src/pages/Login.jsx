@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { writeCookie } from "../common";
 
-const Login = ({ logOrSignSetters }) => {
+const Login = ({ logOrSignSetters, charSetters }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,7 +36,7 @@ const Login = ({ logOrSignSetters }) => {
       console.log("data in login: ", data);
       logOrSignSetters.setIsLoggedIn(true);
       logOrSignSetters.setLoggedUser(data.user);
-      logOrSignSetters.setUserCharacters(data.characters);
+      charSetters.setUserCharacters(data.characters);
       writeCookie("jwt_token", data.token, 7);
 
       setUsername("");

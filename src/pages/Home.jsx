@@ -5,7 +5,7 @@ import GetUserCharacters from "../components/charComponents/GetUserCharacters";
 
 import styled from "styled-components";
 
-const Home = ({ userCharacters }) => {
+const Home = ({ userCharacters, charSetters, characters }) => {
   return (
     <>
       <div>
@@ -26,11 +26,15 @@ const Home = ({ userCharacters }) => {
             <h2>Characters</h2>
           </CharacterListTitle>
           <CharacterListWrapper>
-          {userCharacters && userCharacters.length > 0 ? (
-            <GetUserCharacters userCharacters={userCharacters} />
-          ) : (
-            'No Characters Found'
-          )}
+            {userCharacters && userCharacters.length > 0 ? (
+              <GetUserCharacters
+                userCharacters={userCharacters}
+                characters={characters}
+                charSetters={charSetters}
+              />
+            ) : (
+              "No Characters Found"
+            )}
           </CharacterListWrapper>
         </CharacterWrapperMain>
       </MainWrapper>

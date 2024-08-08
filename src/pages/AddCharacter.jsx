@@ -3,7 +3,13 @@ import styled from "styled-components";
 import { addCharacter } from "../utils/charFetch";
 import { useState } from "react";
 
-const AddChar = ({ loggedUser }) => {
+const generateAvatarUrl = (name) => {
+  return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
+    name
+  )}`;
+};
+
+const AddChar = ({ loggedUser, charSetters }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [pronouns, setPronouns] = useState("");
@@ -27,6 +33,12 @@ const AddChar = ({ loggedUser }) => {
         book,
         loggedUser.id
       );
+
+      const newCharacter = {
+        ...response.character,
+        image: generateAvatarUrl(name),
+      };
+      charSetters.setUserCharacters((prev) => [...prev, newCharacter]);
 
       console.log("Successfully added character", response);
       navigate("/");
