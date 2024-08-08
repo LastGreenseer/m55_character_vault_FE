@@ -1,3 +1,5 @@
+import { getTokenFromCookie } from '../common';
+
 export const addCharacter = async (
   name,
   age,
@@ -132,5 +134,33 @@ export const getAllCharactersFetch = async () => {
     return data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchCharactersWithUserId = async (userId) => {
+  try {
+    const token = getTokenFromCookie('jwt_token');
+    
+    if (!token) {
+      console.log("No token")
+    }
+
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/char/getUserCharacters/${userId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.log(error);
+    }
+
+    const data = await response.json();
+    return data.characters;
+  } catch (error) {
+    console.log('Error fetching characters:', error);
   }
 };
