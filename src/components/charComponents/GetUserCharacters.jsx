@@ -4,12 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import ConfirmDelete from "../modals/ConfirmDelete";
 import { deleteCharacter } from "../../utils/charFetch";
 
-// const generateAvatarUrl = (name) => {
-//   return `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(
-//     name
-//   )}`;
-// };
-
 const GetUserCharacters = ({ userCharacters, charSetters, characters }) => {
   const [showModal, setShowModal] = useState(false);
   const [characterToDelete, setCharacterToDelete] = useState(null);
@@ -28,9 +22,10 @@ const GetUserCharacters = ({ userCharacters, charSetters, characters }) => {
   const handleConfirmDelete = async () => {
     try {
       await deleteCharacter(characterToDelete.name);
-      charSetters.setCharacters((prev) =>
+      charSetters.setUserCharacters((prev) =>
         prev.filter((char) => char.id !== characterToDelete.id)
       );
+
       navigate("/");
     } catch (error) {
       console.error("Error deleting chacter", error);
