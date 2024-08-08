@@ -18,6 +18,7 @@ import UpdateChar from "./pages/UpdateCharacter";
 import CharacterInfo from "./pages/CharacterInfo";
 
 import { getTokenFromCookie } from "./common";
+import { fetchCharactersWithUserId } from "./utils/charFetch";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,11 +39,8 @@ const App = () => {
   useEffect(() => {
     const verifyToken = async () => {
       const token = getTokenFromCookie('jwt_token');
-      console.log('Token from cookie:', token);
-  
       if (token) {
         try {
-          // Verify the token by sending it to the server, ths will return the user data to be used in state
           const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/verify-token`, {
             method: "GET",
             headers: {
@@ -51,32 +49,30 @@ const App = () => {
             }
           });
           
-  
-          console.log('Response status:', response.status);
-  
           if (!response.ok) {
-            const errorText = await response.text();
-            console.log('Error response:', errorText);
-            throw new Error(`Token verification failed: ${response.status} ${errorText}`);
+            throw new Error(`Token verification failed: ${response.status}`);
           }
   
           const data = await response.json();
-          console.log('Response data:', data);
   
           if (data.user) {
-            logOrSignSetters.setIsLoggedIn(true);
-            logOrSignSetters.setLoggedUser(data.user);
+            setIsLoggedIn(true);
+            setLoggedUser(data.user);
+            
+            const characters = await fetchCharactersWithUserId(data.user.id);
+            setUserCharacters(characters);
           } else {
-            throw new Error('User data not found in response');
+            console.log("User not found with that id");
           }
         } catch (error) {
-          console.error('Token verification failed:', error);
+          console.error('Token verification or character fetch failed:', error);
           document.cookie = 'jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-          logOrSignSetters.setLoggedUser(null);
+          setLoggedUser(null);
+          setUserCharacters([]);
         }
       } else {
-        console.log('No token found in cookie');
-        logOrSignSetters.setLoggedUser(null);
+        setLoggedUser(null);
+        setUserCharacters([]);
       }
       setLoading(false);
     };
