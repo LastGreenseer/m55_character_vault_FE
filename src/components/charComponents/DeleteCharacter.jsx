@@ -11,7 +11,6 @@ const DeleteCharacter = () => {
     try {
       const result = await deleteCharacter(name);
       setMessage("Character Deleted!");
-      console.log("Character Deleted!", result);
     } catch (error) {
       setMessage("Error deleting character");
       console.error("Error deleting character", error);

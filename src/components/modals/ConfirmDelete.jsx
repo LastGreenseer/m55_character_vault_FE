@@ -34,7 +34,7 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Slightly darker for better contrast */
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,11 +42,11 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: #1a1b20; /* Darker background to match the app's dark theme */
+  background: #1a1b20;
   padding: 20px;
   border-radius: 8px;
   width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* More pronounced shadow for depth */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,6 @@ const ModalBody = styled.div`
   color: #e0e0e0;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
-
 `;
 
 const ModalFooter = styled.div`

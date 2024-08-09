@@ -22,8 +22,6 @@ const AddChar = () => {
         description,
         book
       );
-
-      console.log("Successfully added character", response);
     } catch (error) {
       console.error("Failed to add character.", error);
     }

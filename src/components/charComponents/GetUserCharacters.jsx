@@ -35,13 +35,6 @@ const GetUserCharacters = ({ userCharacters, charSetters, characters }) => {
     setCharacterToDelete(null);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log("click for character");
-  };
-
-  console.log("user characters in GetUserCharacters", userCharacters);
-
   return (
     <>
       {userCharacters.length < 1 ? (

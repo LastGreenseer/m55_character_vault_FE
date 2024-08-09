@@ -28,8 +28,6 @@ const UpdateChar = () => {
         description,
         book
       );
-
-      console.log("Successfully updated character", response);
     } catch (error) {
       console.error("Failed to update character.", error);
     }
